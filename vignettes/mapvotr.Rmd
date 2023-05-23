@@ -6,7 +6,7 @@ output:
     toc: true
     toc_depth: 4
 vignette: >
-  %\VignetteIndexEntry{Créer des contours de bureaux de vote avec `mapvotr`}
+  %\VignetteIndexEntry{Créer des contours de bureaux de vote avec mapvotr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -1,4 +1,6 @@
-destination: public
+url: ~
 template:
   bootstrap: 5
+  bootswatch: flatly
+  lang: fr
 
