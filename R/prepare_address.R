@@ -1,19 +1,19 @@
-#' prepare_address
+#' Pre-process addresses
 #' 
-#' Prepare your data from REU addresses ans city contours
+#' @description
+#' * Prétraitement des données à partir des adresses du REU et des contours de communes
+#' * Prepares your data from REU addresses and city contours
 #'   
 #' @details
-#' 
 #' prepares : 
-#'   - a table of address (only those "properly" geolocalized ) 
-#'   - list of cities with at least 2 BVs
-#'   - List of city contours
+#'   - a table of address 
+#'     - scope : only those with a minimal geolocalization quality
+#'     - BAN quality "housenumber", "interpolation" or "locality"
+#'   - list of cities with at least 2 BVs (among filtered addresses)
+#'   - List of city geometric contours
 #' 
-#'  - only BAN quality "housenumber","interpolation","locality"
-#'  - only address for cities with at leat 2 BVs
-#'
-#' @param address address
-#' @param contours_com city contours
+#' @param address addresses from REU data (Insee)
+#' @param contours_com city contours (ex : BDTopo IGN)
 #' @param path_log path to write logs (optional)
 #' @param var_cog1 name for city code variable in address table
 #' @param var_bv1 name for bv code variable in address table

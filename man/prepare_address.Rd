@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare_address.R
 \name{prepare_address}
 \alias{prepare_address}
-\title{prepare_address}
+\title{Pre-process addresses}
 \usage{
 prepare_address(
   address,
@@ -14,9 +14,9 @@ prepare_address(
 )
 }
 \arguments{
-\item{address}{address}
+\item{address}{addresses from REU data (Insee)}
 
-\item{contours_com}{city contours}
+\item{contours_com}{city contours (ex : BDTopo IGN)}
 
 \item{var_cog1}{name for city code variable in address table}
 
@@ -35,18 +35,21 @@ List of :
 }
 }
 \description{
-: prepare :
 \itemize{
-\item a table of address (only those "properly" geolocalized )
-\item list of cities with at least 2 BVs
-\item List of city contours
+\item Prétraitement des données à partir des adresses du REU et des contours de communes
+\item Prepares your data from REU addresses and city contours
 }
 }
 \details{
-:
+prepares :
 \itemize{
-\item only BAN quality "housenumber","interpolation","locality"
-\item only address for cities with at leat 2 BVs
+\item a table of address
+\itemize{
+\item scope : only those with a minimal geolocalization quality
+\item BAN quality "housenumber", "interpolation" or "locality"
+}
+\item list of cities with at least 2 BVs (among filtered addresses)
+\item List of city geometric contours
 }
 }
 \examples{

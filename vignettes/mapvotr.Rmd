@@ -40,7 +40,7 @@ library(mapvotr)
 addresses_sample <- mapvotr::addresses_sample
 contours_com_sample <- mapvotr::contours_com_sample
 
-head(as.data.frame(addresses_sample))
+head(addresses_sample)
 head(contours_com_sample)
 ```
 
