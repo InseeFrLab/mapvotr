@@ -1,5 +1,8 @@
 # Package mapvotr
 
+  <!-- badges: start -->
+  [![R-CMD-check](https://github.com/jpramil/mapvotr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jpramil/mapvotr/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
 
 Production de contours approximés de bureaux de votes (BV) à partir de la [base des adresses géolocalisées du Répertoire électoral unique (REU)](lien) diffusée par l'Insee.
 
