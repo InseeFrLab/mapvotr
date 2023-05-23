@@ -24,7 +24,7 @@ contours_com_sample <- contours_com %>%
 usethis::use_data(contours_com_sample, overwrite = TRUE)
 
 # *********************************************************
-#      Input for the example of `vronoi_com` function
+#      Input for the example of `voronoi_com` function
 # *********************************************************
 
 address <- mapvotr::addresses_sample
