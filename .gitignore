@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+inst/doc
+public
+docs
+/doc/
+/Meta/
+mapvotr.Rcheck
+*.tar.gz

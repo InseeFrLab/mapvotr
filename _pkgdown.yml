@@ -1,0 +1,4 @@
+destination: public
+template:
+  bootstrap: 5
+

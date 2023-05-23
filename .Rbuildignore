@@ -1,0 +1,10 @@
+^mapvotr\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^data-raw$
+^_pkgdown\.yml$
+.gitlab-ci.yml
+^docs$
+^pkgdown$
+^doc$
+^Meta$
