@@ -2,7 +2,7 @@
 % Please edit documentation in R/fget_multiBV.R
 \name{fget_multiBV}
 \alias{fget_multiBV}
-\title{fget_multiBV}
+\title{Get cities with 2 vote offices or more}
 \usage{
 fget_multiBV(tab_addresses, var_cog, var_bv)
 }
@@ -17,7 +17,10 @@ fget_multiBV(tab_addresses, var_cog, var_bv)
 vector of city codes (for cities with at least 2 vote offices)
 }
 \description{
-Get COG for cities with at leat 2 vote offices
+\itemize{
+\item Retourne le COG des communes avec au moins deux BV à partir de la base des adresses
+\item Get official codes for cities with at least 2 vote offices
+}
 }
 \examples{
 var_cog = "code_commune_ref"

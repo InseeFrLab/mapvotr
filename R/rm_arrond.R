@@ -1,6 +1,8 @@
-#' rm_arrond
-#'
-#' replace "arrondissements" cog by city cog for Paris, Lyon and Marseille
+#' Remove arrondissements
+#' 
+#' @description
+#' Remplace les cog d'arrondissements communaux par les cog communaux pour Paris, Lyon et Marseille
+#' Replace "arrondissements" codes by city codes for Paris, Lyon and Marseille
 #' 
 #' @param tab table with a cog column 
 #' @param var_cog name of the cog column

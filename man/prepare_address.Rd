@@ -51,6 +51,16 @@ prepares :
 \item list of cities with at least 2 BVs (among filtered addresses)
 \item List of city geometric contours
 }
+
+Operations :
+\itemize{
+\item Removes arrondissement codes for Paris, Lyon and Marseille
+\item Filters addresses (only "housenumber", "interpolation" or "locality" quality)
+\item Filters cities with at least 2 vote offices
+\item Transform address as geometric points (WGS84 projection)
+\item Filters geometric city contours (only cities with at least 2 vote offices)
+\item Logs missing city contours
+}
 }
 \examples{
 addresses_sample <- mapvotr::addresses_sample

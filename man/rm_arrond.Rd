@@ -2,7 +2,7 @@
 % Please edit documentation in R/rm_arrond.R
 \name{rm_arrond}
 \alias{rm_arrond}
-\title{rm_arrond}
+\title{Remove arrondissements}
 \usage{
 rm_arrond(tab, var_cog)
 }
@@ -15,7 +15,8 @@ rm_arrond(tab, var_cog)
 tab with modified cog column (Paris, Lyon and Marseilles codes without arrondissement)
 }
 \description{
-replace "arrondissements" cog by city cog for Paris, Lyon and Marseille
+Remplace les cog d'arrondissements communaux par les cog communaux pour Paris, Lyon et Marseille
+Replace "arrondissements" codes by city codes for Paris, Lyon and Marseille
 }
 \examples{
 tab <- data.frame(id=1:5,code_commune_ref=c("75118","75000","35000","69382",NA))

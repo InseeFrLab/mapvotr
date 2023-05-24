@@ -11,6 +11,14 @@
 #'     - BAN quality "housenumber", "interpolation" or "locality"
 #'   - list of cities with at least 2 BVs (among filtered addresses)
 #'   - List of city geometric contours
+#'   
+#' Operations : 
+#'  - Removes arrondissement codes for Paris, Lyon and Marseille
+#'  - Filters addresses (only "housenumber", "interpolation" or "locality" quality)
+#'  - Filters cities with at least 2 vote offices
+#'  - Transform address as geometric points (WGS84 projection)
+#'  - Filters geometric city contours (only cities with at least 2 vote offices)
+#'  - Logs missing city contours
 #'
 #' @param address addresses from REU data (Insee)
 #' @param contours_com city contours (ex : BDTopo IGN)
@@ -55,15 +63,15 @@ prepare_address <- function(address, contours_com, var_cog1 = "code_commune_ref"
   # Remove "arrondissements" codes for Paris-Lyon-Marseille
   address <- address %>% rm_arrond(var_cog1)
 
-  logr::put("Row number after filtering geo_type")
   address <- address %>% dplyr::filter(.data[["geo_type"]] %in% c("housenumber", "interpolation", "locality"))
+  logr::put("Row number after filtering geo_type")
   logr::put(nrow(address))
 
-  logr::put("Row number after filtering cities with at leat 2 BdV")
   lcog <- fget_multiBV(address, var_cog = var_cog1, var_bv = var_bv1)
   names(lcog) <- lcog
 
   address <- address %>% dplyr::filter(.data[[var_cog1]] %in% lcog)
+  logr::put("Row number after filtering cities with at leat 2 BdV")
   logr::put(nrow(address))
 
   logr::put("Convert to sf using BAN coordinates")
@@ -74,16 +82,15 @@ prepare_address <- function(address, contours_com, var_cog1 = "code_commune_ref"
       na.fail = FALSE
     )
 
-  logr::sep("Read cities contours")
 
-  logr::put("Initial number of rows")
+  logr::put("Initial number of rows in city contours")
   logr::put(nrow(contours_com))
 
   logr::put("Filtering only cities in the scope")
   contours_com <- contours_com %>% dplyr::filter(.data[[var_cog2]] %in% lcog)
 
   if (length(lcog) != nrow(contours_com)) {
-    logr::put("City codes of address not found in city contours...")
+    logr::put("City codes not found in city contours...")
     lcog[!lcog %in% contours_com[[var_cog2]]] %>% logr::put()
   }
 
