@@ -2,12 +2,12 @@
 % Please edit documentation in R/st_cast_bis.R
 \name{st_cast_bis}
 \alias{st_cast_bis}
-\title{st_cast_bis}
+\title{st_cast debugged}
 \usage{
 st_cast_bis(sfdata)
 }
 \arguments{
-\item{sfdata}{: sf object}
+\item{sfdata}{sf object}
 }
 \value{
 cast polygons

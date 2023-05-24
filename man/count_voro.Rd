@@ -2,16 +2,16 @@
 % Please edit documentation in R/count_voro.R
 \name{count_voro}
 \alias{count_voro}
-\title{count_voro}
+\title{Count how many voronoï by cast contours}
 \usage{
 count_voro(contours, voronoi, marg = 1e-04)
 }
 \arguments{
-\item{contours}{: multipolygons (union of voronoï polygons)}
+\item{contours}{multipolygons (union of voronoï polygons)}
 
-\item{voronoi}{: polygons (or multipolygon sometimes)}
+\item{voronoi}{polygons (or multipolygon sometimes)}
 
-\item{marg}{: technical parameter}
+\item{marg}{technical parameter}
 }
 \value{
 number of voronoi polygons per contour (using intersections)
@@ -21,9 +21,9 @@ Count the number of voronoï polygons used to create voting areas (contours)
 }
 \examples{
 \dontrun{
-#contours <- lcontours$`29199` \%>\% st_cast_bis
-#voronoi <- lvoronoi$`29199` \%>\% st_cast_bis
-#marg <-  0.0001
-#count_voro(contours,voronoi)
+# contours <- lcontours$`29199` \%>\% st_cast_bis
+# voronoi <- lvoronoi$`29199` \%>\% st_cast_bis
+# marg <-  0.0001
+# count_voro(contours,voronoi)
 }
 }

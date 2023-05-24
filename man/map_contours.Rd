@@ -2,7 +2,7 @@
 % Please edit documentation in R/map_contours.R
 \name{map_contours}
 \alias{map_contours}
-\title{map_contours}
+\title{Map your contours}
 \usage{
 map_contours(
   cog,
@@ -14,23 +14,26 @@ map_contours(
 )
 }
 \arguments{
-\item{cog}{: Municipality official code}
+\item{cog}{Municipality official code}
 
-\item{sfelecteurs}{: addresses of the targeted city}
+\item{sfelecteurs}{addresses of the targeted city}
 
-\item{contours_bv}{: contours of the targeted city}
+\item{contours_bv}{contours of the targeted city}
 
-\item{var_code_bv}{: name of column : id BV}
+\item{var_code_bv}{name of column : id BV}
 
-\item{var_score}{: name of column : quality of geocoding}
+\item{var_score}{name of column : quality of geocoding}
 
-\item{var_cog}{: name of column : official city code (COG)}
+\item{var_cog}{name of column : official city code (COG)}
 }
 \value{
 dynamic map (leaflet style)
 }
 \description{
-Create a dynamic map of contours
+\itemize{
+\item Crée des cartes dynamiques des contours
+\item Create a dynamic map of contours
+}
 }
 \examples{
 \dontrun{

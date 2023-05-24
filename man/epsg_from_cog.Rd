@@ -2,12 +2,12 @@
 % Please edit documentation in R/epsg_from_cog.R
 \name{epsg_from_cog}
 \alias{epsg_from_cog}
-\title{epsg_from_cog}
+\title{Guess EPSG code}
 \usage{
 epsg_from_cog(cog)
 }
 \arguments{
-\item{cog}{: Municipality official code}
+\item{cog}{Municipality official code}
 }
 \value{
 epsg code

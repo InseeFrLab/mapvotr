@@ -1,7 +1,8 @@
-#' epsg_from_cog
+#' Guess EPSG code
 #' 
 #' Guess epsg code using city code (choosing between metropolitan France and overseas territories)
-#' @param cog : Municipality official code
+#' 
+#' @param cog Municipality official code
 #'
 #' @return epsg code
 #' @export

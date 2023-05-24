@@ -2,7 +2,7 @@
 % Please edit documentation in R/f_inContour.R
 \name{f_inContour}
 \alias{f_inContour}
-\title{f_inContour}
+\title{Exclude points out of their city}
 \usage{
 f_inContour(sfpoints, sfcontour, verbose = FALSE)
 }
@@ -17,17 +17,20 @@ f_inContour(sfpoints, sfcontour, verbose = FALSE)
 sfpoints without points out of sfContour
 }
 \description{
-Exclude points out of a border
+\itemize{
+\item Retire les points en dehors du contour de leur commune
+\item Exclude points out of a border
+}
 }
 \examples{
-sfpoints = addresses_sample[addresses_sample$code_commune_ref == "29039",]
+sfpoints <- addresses_sample[addresses_sample$code_commune_ref == "29039", ]
 sfpoints <- sfpoints \%>\%
-sf::st_as_sf(
-  coords = c("longitude", "latitude"), 
-  crs = 4326,
-  na.fail = FALSE
-)
-sfcontour = contours_com_sample[contours_com_sample$codgeo == "29039",]
-verbose=TRUE
-mapvotr:::f_inContour(sfpoints,sfcontour,verbose)
+  sf::st_as_sf(
+    coords = c("longitude", "latitude"),
+    crs = 4326,
+    na.fail = FALSE
+  )
+sfcontour <- contours_com_sample[contours_com_sample$codgeo == "29039", ]
+verbose <- TRUE
+mapvotr:::f_inContour(sfpoints, sfcontour, verbose)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/valid_for_contours.R
 \name{valid_for_contours}
 \alias{valid_for_contours}
-\title{valid_for_contours}
+\title{Check if the city can be divided into voting contours}
 \usage{
 valid_for_contours(
   tab_address,
@@ -13,21 +13,26 @@ valid_for_contours(
 )
 }
 \arguments{
-\item{tab_address}{: addresses}
+\item{tab_address}{addresses of a single city}
 
-\item{min_points_com}{: minimal number of points by city (global parameter)}
+\item{min_points_com}{minimal number of points by city (global parameter)}
 
-\item{min_address_bv}{:minimal number of address by vote office (global parameter)}
+\item{min_address_bv}{minimal number of address by vote office (global parameter)}
 
 \item{var_bv1}{name for bv code variable in address table}
 
 \item{var_nbaddress}{name for number of addresses for each point in address table}
 }
 \value{
-TRUE if the city is in the scope, otherwise FALSE or a list of problematic BVs
+\itemize{
+\item TRUE if the city is in the scope,
+\item otherwise FALSE or a list of problematic BVs
+}
 }
 \description{
 Check if a city can be in the scope (ok to be divided into several geographical contours)
+}
+\details{
 The function uses the addresses of the city targeted
 }
 \examples{

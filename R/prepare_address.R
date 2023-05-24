@@ -45,7 +45,7 @@
 #' )
 prepare_address <- function(address, contours_com, var_cog1 = "code_commune_ref", var_cog2 = "codgeo", var_bv1 = "id_brut_bv", path_log = NULL) {
 
-  # Open logs (if needed)
+  # Open logs
   if (!is.null(path_log)) {
     dir_log <- path_log
   } else {

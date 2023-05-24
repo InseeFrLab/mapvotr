@@ -2,16 +2,16 @@
 % Please edit documentation in R/shoot_isolated.R
 \name{shoot_isolated}
 \alias{shoot_isolated}
-\title{shoot_isolated}
+\title{Simplify voting contours}
 \usage{
 shoot_isolated(contours, voronoi, min_address_shoot, var_bv = "id_brut_bv")
 }
 \arguments{
-\item{contours}{: contours}
+\item{contours}{contours}
 
-\item{voronoi}{: voronoi polygons}
+\item{voronoi}{voronoi polygons}
 
-\item{min_address_shoot}{: : minimal number of address by polygons in result contours (global parameter)}
+\item{min_address_shoot}{minimal number of address by polygons in result contours (global parameter)}
 
 \item{var_bv}{name for bv code variable in address table}
 }
@@ -22,7 +22,6 @@ simplified contours
 Simplify contours removing isolated polygons
 }
 \details{
-:
 \itemize{
 \item Counts the number of voronoï polygons used to create each BV contour
 \item Targets cast BV Contours (cBVc) built with less than min_address_shoot voronois/points

@@ -2,7 +2,7 @@
 % Please edit documentation in R/decouplage_ptsBv.R
 \name{decouplage_ptsBv}
 \alias{decouplage_ptsBv}
-\title{decouplage_ptsBv}
+\title{Reconciliation points - vote offices}
 \usage{
 decouplage_ptsBv(
   sfelecteurs,
@@ -14,9 +14,9 @@ decouplage_ptsBv(
 )
 }
 \arguments{
-\item{sfelecteurs}{: table of addresses (sf object)}
+\item{sfelecteurs}{table of addresses (sf object)}
 
-\item{com}{: city contour (sf object)}
+\item{com}{city contour (sf object)}
 
 \item{var_bv}{name for bv code variable in address table}
 
@@ -24,7 +24,7 @@ decouplage_ptsBv(
 
 \item{var_nbaddress}{name for number of addresses for each point in address table}
 
-\item{epsg}{: epsg code}
+\item{epsg}{epsg code}
 }
 \value{
 passing table between BVs and points
@@ -37,17 +37,19 @@ Gives a single BV for each point
 \item when several addresses geolocalized on the same point, and those addresses are related with different BVs :
 \itemize{
 \item If possible : Take the BV with a maximum number of addresses geolocalized on that point
-\item If as many number of addresses for several BVs : take the BV related to the best geolocalised point
+\item If as many number of addresses for several BVs : take the BV related to the best geolocalized points
 \item Else, random choice (rare)
 }
 }
 }
 \examples{
 sfelecteurs <- mapvotr::sf_input_voronoi
-com <- mapvotr::contours_com_sample\%>\% dplyr::filter(codgeo == "29039") \%>\% sf::st_transform(2154)
+com <- mapvotr::contours_com_sample \%>\%
+  dplyr::filter(codgeo == "29039") \%>\%
+  sf::st_transform(2154)
 var_bv <- "id_brut_bv"
 var_geo_score <- "geo_score"
-var_nbaddress <-  "nb_adresses"
+var_nbaddress <- "nb_adresses"
 epsg <- 2154
-mapvotr:::decouplage_ptsBv(sfelecteurs,com,var_bv,var_geo_score,var_nbaddress,epsg)
+mapvotr:::decouplage_ptsBv(sfelecteurs, com, var_bv, var_geo_score, var_nbaddress, epsg)
 }

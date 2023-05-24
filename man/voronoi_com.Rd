@@ -2,16 +2,16 @@
 % Please edit documentation in R/voronoi_com.R
 \name{voronoi_com}
 \alias{voronoi_com}
-\title{voronoi_com}
+\title{Make Voronoï polygons}
 \usage{
 voronoi_com(sfelecteurs, com, var_bv)
 }
 \arguments{
-\item{sfelecteurs}{: sf points}
+\item{sfelecteurs}{sf points}
 
-\item{com}{: city contours (sf multipolygons)}
+\item{com}{city contours (sf multipolygons)}
 
-\item{var_bv}{: column name for BV id column}
+\item{var_bv}{column name for BV id column}
 }
 \value{
 voronoi multipolygons
@@ -31,7 +31,9 @@ Create voronoi polygons inside city contours.
 }
 \examples{
 sfelecteurs <- mapvotr::sf_input_voronoi
-com <- mapvotr::contours_com_sample\%>\% dplyr::filter(codgeo == "29039") \%>\% sf::st_transform(2154)
-var_bv = "id_brut_bv"
-mapvotr:::voronoi_com(sfelecteurs,com,var_bv)
+com <- mapvotr::contours_com_sample \%>\%
+  dplyr::filter(codgeo == "29039") \%>\%
+  sf::st_transform(2154)
+var_bv <- "id_brut_bv"
+mapvotr:::voronoi_com(sfelecteurs, com, var_bv)
 }

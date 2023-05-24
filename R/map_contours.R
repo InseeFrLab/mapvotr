@@ -1,13 +1,14 @@
-#' map_contours
+#' Map your contours
 #' 
-#' Create a dynamic map of contours
+#' - Crée des cartes dynamiques des contours
+#' - Create a dynamic map of contours
 #' 
-#' @param cog : Municipality official code
-#' @param sfelecteurs : addresses of the targeted city
-#' @param contours_bv : contours of the targeted city
-#' @param var_code_bv : name of column : id BV
-#' @param var_score  : name of column : quality of geocoding
-#' @param var_cog : name of column : official city code (COG)
+#' @param cog Municipality official code
+#' @param sfelecteurs addresses of the targeted city
+#' @param contours_bv contours of the targeted city
+#' @param var_code_bv name of column : id BV
+#' @param var_score name of column : quality of geocoding
+#' @param var_cog name of column : official city code (COG)
 #'
 #' @return dynamic map (leaflet style)
 #' @export
