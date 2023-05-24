@@ -12,6 +12,7 @@
 
 epsg_from_cog <- function(cog) {
   
+  logr::put("Launch : epsg_from_cog")
   stopifnot("epsg_from_cog : pb with cog"=stringr::str_length(as.character(cog))==5L) 
 
   proj_lambert93 <- 2154

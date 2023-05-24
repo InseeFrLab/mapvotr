@@ -29,6 +29,8 @@
 
 decouplage_ptsBv <- function(sfelecteurs,com,var_bv = "id_brut_bv",var_geo_score="geo_score",var_nbaddress = "nb_adresses",epsg){
   
+  logr::put("Launch : decouplage_ptsBv")
+  
   # Manage variable names...
   # colnames(sfelecteurs)[colnames(sfelecteurs)==var_bv] <- "code_bv"
   

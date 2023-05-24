@@ -22,6 +22,8 @@
 
 voronoi_com <- function(sfelecteurs,com,var_bv){
   
+  logr::put("Launch voronoi_com")
+  
   # Count how many points (=lines) on the same geographic position 
   points_multiBV <- sfelecteurs %>% 
     dplyr::group_by(geometry) %>% 

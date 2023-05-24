@@ -22,6 +22,8 @@
 
 shoot_isolated <- function(contours,voronoi,min_address_shoot,var_bv = "id_brut_bv"){
   
+  logr::put("Launch : shoot_isolated")
+  
   # Cast contours
   contours_cast <- st_cast_bis(contours)
   # Cast voronoi

@@ -14,6 +14,9 @@
 
 
 rm_arrond <- function(tab,var_cog){
+  
+  logr::put("Launch rm_arrond")
+  
   tab[[var_cog]][tab[[var_cog]] %>% stringr::str_detect("^751")] <- "75056"
   tab[[var_cog]][tab[[var_cog]] %>% stringr::str_detect("^132")] <- "13055"
   tab[[var_cog]][tab[[var_cog]] %>% stringr::str_detect("^6938")] <- "69123"

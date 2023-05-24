@@ -27,6 +27,9 @@
 
 
 valid_for_contours <- function(tab_address, min_points_com, min_address_bv,var_bv1,var_nbaddress) {
+  
+  logr::put("Launch valid_for_contours")
+  
   tab_address <- tab_address %>% sf::st_drop_geometry()
   nb_row <- nrow(tab_address)
   

@@ -17,6 +17,9 @@
 
 
 fget_multiBV <- function(tab_addresses,var_cog,var_bv){
+  
+  logr::put("Launch fget_multiBV")
+  
   nbBV_par_cog <- tab_addresses %>% 
     dplyr::group_by(.data[[var_cog]]) %>% 
     dplyr::summarise(nb_bv=length(unique(.data[[var_bv]])))

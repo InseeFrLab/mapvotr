@@ -22,6 +22,9 @@
 
 
 f_inContour <- function(sfpoints,sfcontour,verbose=FALSE){
+  
+  logr::put("Launch f_inContour")
+  
   test_out <- sf::st_intersects(sfpoints,sfcontour) %>% purrr::map_lgl(~length(.x)==0L)
   if(verbose) print(paste0(sum(test_out)," points removed"))
   sfpoints[!test_out,]

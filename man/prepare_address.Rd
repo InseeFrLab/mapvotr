@@ -55,9 +55,11 @@ prepares :
 \examples{
 addresses_sample <- mapvotr::addresses_sample
 contours_com_sample <- mapvotr::contours_com_sample
-prepare_address <- prepare_address(address = addresses_sample,
-contours_com = contours_com_sample,
-var_cog1 = "code_commune_ref",
-var_bv1 = "id_brut_bv",
-path_log=NULL)
+prepare_address <- prepare_address(
+  address = addresses_sample,
+  contours_com = contours_com_sample,
+  var_cog1 = "code_commune_ref",
+  var_bv1 = "id_brut_bv",
+  path_log = NULL
+)
 }

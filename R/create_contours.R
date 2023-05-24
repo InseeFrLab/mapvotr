@@ -55,13 +55,13 @@ create_contours <- function(prep_adr,cog,min_points_com,min_address_bv,min_addre
   
   
   # Open logs (if needed)
-  option_logr_init <- getOption("logr.on")
-  if(!is.null(path_log)) {
-    options("logr.on" = T)
-    lf <- logr::log_open(paste0(path_log,"/log_prepare_address"))
-  }else{
-    options("logr.on" = F)
+  if (!is.null(path_log)) {
+    dir_log <- path_log
+  } else {
+    dir_log <- tempdir()
   }
+  
+  lf <- logr::log_open(file.path(dir_log, "log_create_contours"))
   
   logr::sep("First checks")
   if(!cog %in% lcog_ok){
@@ -79,6 +79,7 @@ create_contours <- function(prep_adr,cog,min_points_com,min_address_bv,min_addre
   # Stop if the city is out of scope
   logr::put("Check if the city can be in the scope")
   scope_test <- valid_for_contours(address,min_points_com,min_address_bv,var_bv1 = var_bv1,var_nbaddress = var_nbaddress)
+  
   if(isFALSE(scope_test)) { # All the city is problematic
     return(NULL)
   }else if(!isTRUE(scope_test)){ # Some problematic BVs
@@ -95,11 +96,8 @@ create_contours <- function(prep_adr,cog,min_points_com,min_address_bv,min_addre
   
   
   # Create Voronoi
-  logr::sep("Launch function : voronoi_com")
   voronoi <- voronoi_com(address,com,var_bv = var_bv1)
   
-  
-  logr::sep("Launch function : decouplage_ptsBv")
   passage_ptsBv <- decouplage_ptsBv(address,com,var_bv = var_bv1,var_geo_score = var_geo_score,epsg = code_epsg)
   
   logr::put("Join voronoi and passage_ptsBv") 
@@ -113,14 +111,9 @@ create_contours <- function(prep_adr,cog,min_points_com,min_address_bv,min_addre
   contours <- voronoi %>% dplyr::group_by(.data[[var_bv1]]) %>% dplyr::summarise(geometry=sf::st_union(geometry))
   
   # Shoot isolated voronoi
-  logr::sep("Launch function : Shoot_isolated")
   contours_simplified <- shoot_isolated(contours,voronoi,min_address_shoot=min_address_shoot,var_bv = var_bv1) 
   
-  if(!is.null(path_log))
-    logr::log_close()
-  
-  # Initial options
-  options("logr.on" = option_logr_init)
+  logr::log_close()
   
   return(list("contours" = contours,
               "contours_simplified" = contours_simplified))

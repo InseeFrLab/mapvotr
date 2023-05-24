@@ -20,6 +20,8 @@
 
 count_voro <- function(contours , voronoi, marg = 0.0001){
   
+  logr::put("Launch : count_voro")
+  
   contours_is_polygon <- unique(as.vector(sf::st_geometry_type(contours))) %>% identical("POLYGON")
   voronoi_is_polygon <- unique(as.vector(sf::st_geometry_type(voronoi))) %>% identical("POLYGON")
   stopifnot("count_voro : inputs must be POLYGONS" = contours_is_polygon & voronoi_is_polygon)
