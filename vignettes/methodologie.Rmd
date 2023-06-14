@@ -1,5 +1,5 @@
 ---
-title: "Méthodologie"
+title: "Méthodologie adoptée"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{methodologie}
@@ -22,84 +22,88 @@ options(
 
 
 
-
-
-## Détails sur la méthodologie adoptée
-
-
-### Hypothèses : 
+**Hypothèses**
 
 * Seules les adresses géolocalisées avec un niveau de précision "suffisant" sont mobilisées pour créer les approximations de contours de bureaux de vote.
+
 * Champ des communes « découpables » : 
   
   * celles avec au moins 2 bureaux de vote.
-* celles ayant un nombre de « points » géolocalisés en leur sein supérieur à un seuil (avec un niveau de confiance acceptable dans la BAN).
+  * celles ayant un nombre de « points » géolocalisés en leur sein supérieur à un seuil (avec un niveau de confiance acceptable dans la BAN).
+  
 * Un contours de bureau de vote sera créé s'il existe un nombre minimal d'adresses associées à ce bureau de vote (toujours dans la base du REU).
 
-Rappel : différentes **adresses** du REU peuvent-être géolocalisées sur le même **point géographique**.
+Remarque : différentes **adresses** du REU peuvent-être géolocalisées sur le même **point géographique**.
 
 
 
-### 1. Nettoyage et préparation des inputs
+## 1. Nettoyage et préparation des inputs
 
+<!-- Attention aux indentations ci-dessous. A relire -->
 
 * La fonction `prepare_address` : 
   * Remplace les arrondissement communaux de Paris, Lyon et Marseille par le code commune de la ville entière (grâce à la fonction interne `rm_arrond`).
-* Ne conserve que les adresses 
-* dans des communes avec au moins 2 bureaux de vote (BV) d'après la base des adresses du REU (grâce à la fonction interne `fget_multiBV`).
-* avec une bonne qualité de géolocalisation d'après la BAN (`housenumber`,`interpolation`, `locality`)/
-  * Transforme les adresses en table `sf` avec une projection WGS84.
-* Récupère les contours et la liste des communes susceptibles d'être découpées en contours de BV (à partir de la table des contours de communes en entrée de la fonction).
+  * Ne conserve que les adresses... 
+        - ... dans des communes avec au moins 2 bureaux de vote (BV) d'après la base des adresses du REU (grâce à la fonction interne `fget_multiBV`).
+        - ... avec une bonne qualité de géolocalisation d'après la Base Adresse Nationale ([BAN](https://adresse.data.gouv.fr/)) (`housenumber`,`interpolation`, `locality`)/
+  * Transforme les adresses en table `sf` avec le système de coordonnées WGS84.
+  * Récupère les contours et la liste des communes susceptibles d'être découpées en contours de BV (à partir de la table des contours de communes en entrée de la fonction).
 
-Ainsi, en théorie, une grande commune dont les adresses sont géolocalisées de manière imprécise pourrait être exclue du champ.
+Ainsi, en théorie, une grande commune dont les adresses sont géolocalisées de manière trop imprécise pourrait être exclue du champ.
 
 La fonction renvoie des logs, c'est-à-dire enregistre l'historique du bon déroulé des différentes fonctions.
 Pour enregistrer ces logs localement, il faut entrer un chemin dans le paramètre `path_log`.
 
 
 
-### 2. Découpage d'une commune en contours de bureaux de vote
+## 2. Découpage d'une commune en contours de bureaux de vote
 
-La fonction `create_contours` vise à partionner une ville cible en contours des bureaux de vote.
-La ville cible est désignée par son code officiel géographique.
+La fonction `create_contours` vise à partionner une ville cible en contours approximés de bureaux de vote.
+La ville cible est désignée par son code officiel géographique ou "code Insee".
 `create_contours` utilise la liste des adresses et les contours communaux produits par `prepare_address`.
 
-**Étape 1 : Vérifications et préparations**
+### Étape 1 : Vérifications et préparations
   
   * Suppression des points de la base REU en dehors du contours géographique de la commune (des effets de bords peuvent exister entre les différentes sources).
-* Vérification que la commune cible possède au moins **min_points_com** points (grâce à la fonction interne `valid_for_contours`). Autrement, la fonction renvoie `NULL`.
-* Vérifier que chaque bureau de vote (BV) de la commune est composé d'au moins **min_address_bv** adresses.
-  * Si ce n'est pas le cas, les adresses associées à ce BV sont retirées du champ et la commune sera découpée sans prise en compte de l'existence de ce BV.
+  * Vérification que la commune cible possède au moins **min_points_com** points (grâce à la fonction interne `valid_for_contours`). Autrement, la fonction renvoie `NULL`.
+  * Vérification que chaque bureau de vote (BV) de la commune est composé d'au moins **min_address_bv** adresses.
+      - Si ce n'est pas le cas, les adresses associées à ce BV sont retirées du champ et la commune sera découpée sans prise en compte de l'existence de ce BV.
 
-**Étape 2 : Partitionnement de la commune en contours de bureaux de vote**
+### Étape 2 : Partitionnement de la commune en contours de bureaux de vote
 
 * Partition de la commune en polygones de Voronoï à partir du nuage de points géolocalisés (grâce à la fonction interne `voronoi_com`)
 * Association d'un bureau de vote (BV) à chaque Voronoï (grâce à la fonction interne `decouplage_ptsBv`) :
-  * Des hypothèses sont nécessaires quand on trouve plusieurs adresses sur un même point géographique, et que ces adresses sont reliés à plusieurs BV différents.
-* On considère par ordre de priorité le nombre d'adresses associées à chaque BV, puis la qualité de géolocalisation de ces adresses.
+  * Des hypothèses sont nécessaires quand on trouve plusieurs adresses sur un même point géographique, et que ces adresses sont reliés à plusieurs BV différents : on considère par ordre de priorité le nombre d'adresses associées à chaque BV, puis la qualité de géolocalisation de ces adresses.
 
-* On regroupe géographiquement (union) les polygones de Voronoï par bureau de vote. Les contours sont ainsi formés.
+* On regroupe géographiquement (union) les polygones de Voronoï par bureau de vote.
 
-**Étape 3 : Simplification/correction a posteriori des contours**
+**_Une première version de contours "bruts" est ainsi construite._**
 
-* L'idée est de supprimer les éventuels « confettis » de contours, essentiellement dus à des imprécisions de géolocalisation. La fonction interne `shoot_isolated` est ici mobilisée. 
-* Les contours des bureaux de votes n'étant pas nécessairement contigus, on transforme le zonage en polygones contigus (grâce à la fonction interne `st_cast_bis`)
-* Ces polygones étant, par construction des juxtapositions de polygones de Voronoï, on recherche les polygones composés de moins de **min_address_shoot** polygones de Voronoï (et donc de moins de `min_address_shoot` points géographiques). Cette opération est réalisée à l'aide de la fonction interne `count_voro`.
-* Pour un petit polygone candidat, on modifie le code de BV auquel il est associé :
-  * Si ce polygone n'est pas isolé (s'il touche d'autres polygones associés à l'autres BV)
-* Si au moins un de ses voisins est suffisamment gros (composé de plus de `min_address_shoot` points géographiques).
-* Si ces conditions sont réunies, on choisit comme nouveau code BV celui du plus gros voisin.
-* Enfin, on fusionne les polygones en fonction de leur éventuels nouveaux codes BV et on reforme ainsi une partion de la commune en contours de BV expurgés des « confettis » traîtés. 
+### Étape 3 : Simplification/correction a posteriori des contours
 
+L'idée est de supprimer les éventuels « confettis » de contours, essentiellement dus à des imprécisions de géolocalisation. La fonction interne `shoot_isolated` est ici mobilisée. 
+
+  * Les contours des bureaux de votes n'étant pas nécessairement contigus, on     transforme le zonage en polygones contigus (grâce à la fonction interne `st_cast_bis`)
+  * Ces polygones étant, par construction, des juxtapositions de polygones de Voronoï, on recherche les polygones composés de moins de **min_address_shoot** polygones de Voronoï (et donc de moins de `min_address_shoot` points géographiques). Cette opération est réalisée à l'aide de la fonction interne `count_voro`.
+  * Pour un petit polygone candidat, on modifie le code de BV auquel il est associé :
+    * Si ce polygone n'est pas isolé (s'il touche d'autres polygones associés à l'autres BV)
+    * Si au moins un de ses voisins est suffisamment gros (composé de plus de `min_address_shoot` points géographiques).
+    * Si ces conditions sont réunies, on choisit comme nouveau code BV celui du plus gros voisin.
+    * Enfin, on fusionne les polygones en fonction de leur éventuels nouveaux codes BV.
+    
+**_On reforme ainsi une partion de la commune en contours de BV expurgés des « confettis » traîtés._**
 
 La fonction `create_contours` renvoie la partition brute et la partition simplifiée de la commune.
 
-Comment précedemment, `create_contours` renvoie des logs, qui peuvent être enregistrée localement grâce au paramètre `path_log`.
+Comment précedemment, `create_contours` renvoie des logs, qui peuvent être enregistrées localement grâce au paramètre `path_log`.
 
-### 3. Visualisation dynamique des contours créés
+## 3. Visualisation dynamique des contours créés
 
-La package `mapvotr` met à disposition de l'utilisateur une fonction de visualisation des contours produits aux étapes précédentes, dans une optique de contrôle-qualité.
+La package `mapvotr` met à disposition de l'utilisateur une fonction de visualisation des contours produits aux étapes précédentes, permettant notamment d'en contrôler la qualité.
 
 La fonction `map_contours` permet ainsi de visualiser conjointement dans la commune cible sur des fonds de cartes dynamiques :
+
   * les contours produits (bruts ou simplifiés) ;
   * Les adresses géolocalisées du REU (à afficher selon le besoin en cochant l'affichage dans les options)
+  
+**_Pour plus de détails, voir la vignette de prise en main du package._**
