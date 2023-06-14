@@ -1,4 +1,4 @@
-# Package mapvotR
+# Package mapvotr
 
   <!-- badges: start -->
   [![R-CMD-check](https://github.com/jpramil/mapvotr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jpramil/mapvotr/actions/workflows/R-CMD-check.yaml)
@@ -12,10 +12,10 @@ Production de contours approximés de bureaux de votes (BV) à partir de la [bas
 **Installation**
 
 ```
-devtools::install_github("InseeFrLab/mapvotR")
+devtools::install_github("InseeFrLab/mapvotr")
 ```
 
-Pour un exemple d'utilisation et pour davantage d'informations sur la méthode, se référer à la documentation en ligne de [mapvotR](LIEN_A_AJOUTER_ULTERIEUREMENT)
+Pour un exemple d'utilisation et pour davantage d'informations sur la méthode, se référer à la documentation en ligne de [mapvotr](LIEN_A_AJOUTER_ULTERIEUREMENT)
 
 ## En savoir plus
 
