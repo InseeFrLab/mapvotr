@@ -29,8 +29,8 @@ options(
 
 Le package `mapvotr` s'appuie sur 2 types de sources de données ouvertes : 
 
-1. Le fichier déposé sur Insee.fr contenant les adresses des électeurs (mettre url XXXXXXXXXX)
-2. Le fichier des contours communaux issu par exemple de la BD TOPO de l'IGN.
+1. Le [fichier déposé sur insee.fr](LIEN_A_AJOUTER_ULTERIEUREMENT) contenant les adresses des électeurs ;
+2. Le fichier des contours communaux, issu par exemple de la [BD TOPO](https://geoservices.ign.fr/bdtopo) de l'IGN.
 
 Pour simplifier sa prise en main, le package incorpore des extraits de ces deux fichiers.
 
