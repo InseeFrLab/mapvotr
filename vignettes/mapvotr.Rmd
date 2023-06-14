@@ -105,7 +105,7 @@ head(lcontours$contours)
 head(lcontours$contours_simplified)
 ```
 
-## 4. Visualisation des contours produits
+## 3. Visualisation des contours produits
 
 La fonction `map_contours` permet de visualiser rapidement les contours produits à partir des adresses géolocalisées du REU.
 
