@@ -34,12 +34,12 @@ Le package `mapvotr` s'appuie sur 2 types de sources de données ouvertes :
 
 Pour simplifier sa prise en main, le package incorpore des extraits de ces deux fichiers.
 
-```{r}
+```{r }
 library(mapvotr)
 addresses_sample <- mapvotr::addresses_sample
 contours_com_sample <- mapvotr::contours_com_sample
 
-head(addresses_sample)
+head(as.data.frame(addresses_sample))
 head(contours_com_sample)
 ```
 
@@ -62,7 +62,7 @@ prep_adr <- mapvotr::prepare_address(
   var_bv1 = "id_brut_bv",
   path_log = NULL) 
 
-head(prep_adr$address)
+head(as.data.frame(prep_adr$address))
 head(prep_adr$contours_com)
 print(prep_adr$lcog)
 
@@ -101,8 +101,8 @@ lcontours <- mapvotr::create_contours(
   var_nbaddress = "nb_adresses",
   path_log = NULL)
 
-head(lcontours$contours)
-head(lcontours$contours_simplified)
+head(as.data.frame(lcontours$contours))
+head(as.data.frame(lcontours$contours_simplified))
 ```
 
 ## 4. Visualisation des contours produits
