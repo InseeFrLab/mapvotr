@@ -70,7 +70,7 @@ create_contours <- function(prep_adr, cog, min_points_com, min_address_bv, min_a
   lcog_ok <- prep_adr$lcog
   code_epsg <- epsg_from_cog(cog)
 
-  logr::sep("First checks")
+  logr::put("First checks")
   if (!cog %in% lcog_ok) {
     logr::put("Only one BV in this city")
     return(NULL)

@@ -1,5 +1,5 @@
 ---
-title: "Créer des contours de bureaux de vote avec mapvotr"
+title: "Approximer des contours de bureaux de vote"
 subtitle: "À partir des adresses géolocalisées du Répertoire électoral unique (REU)"
 output:
   rmarkdown::html_vignette:
@@ -25,7 +25,7 @@ options(
 ```
 
 
-## 0. Les données en entrée
+## Les données en entrée
 
 Le package `mapvotr` s'appuie sur 2 types de sources de données ouvertes : 
 
@@ -48,9 +48,9 @@ head(contours_com_sample)
 
 À partir des deux sources précédentes, la fonction `prepare_address` va créer : 
 
-* Une nouvelle table d'adresses, en ne retenant que celles ayant une qualité de géolocalisation suffisante, et uniquement dans les communes ayant au moins deux bureaux de vote.
-* Une liste des communes ayant au moins 2 bureaux de votes (et donc susceptibles d'être découpées)
-* Une liste des COG (codes officiels géographiques) de ces communes
+* Une nouvelle table d'adresses, en ne retenant que celles ayant une qualité de géolocalisation suffisante, et uniquement dans les communes ayant au moins deux bureaux de vote ;
+* Une liste des communes ayant au moins 2 bureaux de votes (et donc susceptibles d'être partitionnées) ;
+* Une liste des COG (codes officiels géographiques) de ces communes.
 
 
 ```{r}
@@ -70,14 +70,17 @@ print(prep_adr$lcog)
 
 ## 2. Construire les contours d'une commune
 
-A partir de la liste `prep_adr` précedemment obtenue, on crée les contours d'une commune avec la fonction `create_contours`. 
+A partir de la liste `prep_adr` précedemment obtenue, la fonction `create_contours` permet de partitionner une commune donnée en « aires » ou « contours » approximatifs des bureaux de vote.
+
 Par exemple, essayons avec la commune de Douarnenez en Bretagne (code 29046, elle fait partie de l'échantillon des données du package).
 
 Avant cela, le découpage des communes en contours de bureaux de vote nécessite des hypothèses de construction : 
 
-* `MIN_POINT_COM` : Une commune ne pourra être découpée que si elle possède un minimum de points géolocalisés en son sein (d'après la base des adresses du REU)
-* `MIN_ADDRESS_BV` : Un contours de bureau de vote sera créé s'il existe un nombre minimal d'adresses associées à ce bureau de vote (toujours dans la base du REU)
-* `MIN_ADDRESS_SHOOT` : Lors de la phase de "simplification / correction" de la géographie des contours, les polygones concernés seront ceux comportant un petit nombre d'adresses en leur sein.
+* `MIN_POINT_COM` : Une commune ne pourra être découpée que si elle possède un minimum de points géolocalisés en son sein (d'après la base des adresses du REU) ;
+
+* `MIN_ADDRESS_BV` : Un contours de bureau de vote sera créé s'il existe un nombre minimal d'adresses associées à ce bureau de vote (toujours dans la base du REU) ;
+
+* `MIN_ADDRESS_SHOOT` : Lors de la phase de « simplification / correction » de la géographie des contours, les polygones concernés seront ceux comportant un petit nombre d'adresses en leur sein.
 
 ```{r }
 
@@ -109,7 +112,7 @@ head(as.data.frame(lcontours$contours_simplified))
 
 La fonction `map_contours` permet de visualiser rapidement les contours produits à partir des adresses géolocalisées du REU.
 
-*Note : La couche des points-adresses utilisée pour la création des contours est à afficher selon le besoin en cochant l'affichage dans les options.*
+*Note : La couche des points-adresses utilisée pour la création des contours est à afficher selon le besoin en cochant l'affichage dans les options (en haut à droite de la carte).*
 
 ```{r out.width = '100%'}
 

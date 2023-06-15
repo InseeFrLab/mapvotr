@@ -24,7 +24,7 @@ options(
 
 **Hypothèses**
 
-* Seules les adresses géolocalisées avec un niveau de précision "suffisant" sont mobilisées pour créer les approximations de contours de bureaux de vote.
+* Seules les adresses géolocalisées avec un niveau de précision « suffisant » sont mobilisées pour créer les approximations de contours de bureaux de vote.
 
 * Champ des communes « découpables » : 
   
@@ -44,8 +44,8 @@ Remarque : différentes **adresses** du REU peuvent-être géolocalisées sur le
 * La fonction `prepare_address` : 
   * Remplace les arrondissement communaux de Paris, Lyon et Marseille par le code commune de la ville entière (grâce à la fonction interne `rm_arrond`).
   * Ne conserve que les adresses... 
-        - ... dans des communes avec au moins 2 bureaux de vote (BV) d'après la base des adresses du REU (grâce à la fonction interne `fget_multiBV`).
-        - ... avec une bonne qualité de géolocalisation d'après la Base Adresse Nationale ([BAN](https://adresse.data.gouv.fr/)) (`housenumber`,`interpolation`, `locality`)/
+    * ... dans des communes avec au moins 2 bureaux de vote (BV) d'après la base des adresses du REU (grâce à la fonction interne `fget_multiBV`).
+    * ... avec une bonne qualité de géolocalisation d'après la Base Adresse Nationale ([BAN](https://adresse.data.gouv.fr/)) (`housenumber`,`interpolation`, `locality`).
   * Transforme les adresses en table `sf` avec le système de coordonnées WGS84.
   * Récupère les contours et la liste des communes susceptibles d'être découpées en contours de BV (à partir de la table des contours de communes en entrée de la fonction).
 
@@ -59,7 +59,7 @@ Pour enregistrer ces logs localement, il faut entrer un chemin dans le paramètr
 ## 2. Découpage d'une commune en contours de bureaux de vote
 
 La fonction `create_contours` vise à partionner une ville cible en contours approximés de bureaux de vote.
-La ville cible est désignée par son code officiel géographique ou "code Insee".
+La ville cible est désignée par son code officiel géographique ou « code Insee ».
 `create_contours` utilise la liste des adresses et les contours communaux produits par `prepare_address`.
 
 ### Étape 1 : Vérifications et préparations
@@ -77,7 +77,7 @@ La ville cible est désignée par son code officiel géographique ou "code Insee
 
 * On regroupe géographiquement (union) les polygones de Voronoï par bureau de vote.
 
-**_Une première version de contours "bruts" est ainsi construite._**
+**_Une première version de contours « bruts » est ainsi construite._**
 
 ### Étape 3 : Simplification/correction a posteriori des contours
 
@@ -89,7 +89,7 @@ L'idée est de supprimer les éventuels « confettis » de contours, essentielle
     * Si ce polygone n'est pas isolé (s'il touche d'autres polygones associés à l'autres BV)
     * Si au moins un de ses voisins est suffisamment gros (composé de plus de `min_address_shoot` points géographiques).
     * Si ces conditions sont réunies, on choisit comme nouveau code BV celui du plus gros voisin.
-    * Enfin, on fusionne les polygones en fonction de leur éventuels nouveaux codes BV.
+    * Enfin, on fusionne les polygones en fonction de leurs éventuels nouveaux codes BV.
     
 **_On reforme ainsi une partion de la commune en contours de BV expurgés des « confettis » traîtés._**
 
