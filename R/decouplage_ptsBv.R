@@ -31,7 +31,7 @@ decouplage_ptsBv <- function(sfelecteurs, com, var_bv = "id_brut_bv", var_geo_sc
   logr::put("Launch : decouplage_ptsBv")
 
   # Retrieve numeric coordinates (to group addresses by geometric points later)
-  xy <- sf::st_coordinates(st_geometry(sfelecteurs)) %>%
+  xy <- sf::st_coordinates(sf::st_geometry(sfelecteurs)) %>%
     dplyr::as_tibble() %>%
     dplyr::rename(x_point = X, y_point = Y) %>%
     dplyr::mutate(xy = paste(x_point, y_point, sep = "_")) %>%
@@ -40,12 +40,14 @@ decouplage_ptsBv <- function(sfelecteurs, com, var_bv = "id_brut_bv", var_geo_sc
 
   # Si plusieurs bureaux pour 1 coord, prendre le bureau ayant le max d'adresses.
   dfelecteurs <- sfelecteurs %>% sf::st_drop_geometry()
+  
   passage <- dfelecteurs %>%
     dplyr::group_by(.data[[var_bv]], xy) %>%
     dplyr::summarise(n_address = sum(.data[[var_nbaddress]]))
+  
   passage <- passage %>%
     dplyr::group_by(xy) %>%
-    dplyr::summarise({{ var_bv }} := .data[[var_bv]][n_address == max(n_address)])
+    dplyr::reframe({{ var_bv }} := .data[[var_bv]][n_address == max(n_address)])
 
 
   # Si autant d'adresses pour chaque BV en 1 coord, la coord la mieux géolocalisée impose son BV
@@ -54,7 +56,7 @@ decouplage_ptsBv <- function(sfelecteurs, com, var_bv = "id_brut_bv", var_geo_sc
     passage_qualiteGeo <- dfelecteurs %>% dplyr::filter(xy %in% coords_multiBV_egalite)
     passage_qualiteGeo <- passage_qualiteGeo %>%
       dplyr::group_by(xy) %>%
-      dplyr::summarise({{ var_bv }} := .data[[var_bv]][.data[[var_geo_score]] == max(.data[[var_geo_score]])])
+      dplyr::reframe({{ var_bv }} := .data[[var_bv]][.data[[var_geo_score]] == max(.data[[var_geo_score]])])
 
     passage <- passage %>%
       dplyr::filter(!xy %in% coords_multiBV_egalite) %>%
