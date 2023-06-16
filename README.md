@@ -1,5 +1,7 @@
 # Package mapvotr
 
+<img src="https://github.com/jpramil/mapvotr/inst/sticker/hex-mapvotr.png" width="140" height="150" align="right"/>
+
   <!-- badges: start -->
   [![R-CMD-check](https://github.com/jpramil/mapvotr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jpramil/mapvotr/actions/workflows/R-CMD-check.yaml)
   <!-- badges: end -->
