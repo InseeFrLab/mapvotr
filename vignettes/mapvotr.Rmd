@@ -24,6 +24,20 @@ options(
 )
 ```
 
+Ce package est un outil permettant de partitionner les communes françaises en « contours » ou « aires » de bureaux de vote à partir des [adresses du Répertoire électoral unique](LIEN A AJOUTER) (REU) publiées en *open-source*.
+
+Les contours de bureaux de vote produits n'ont pas de caractère officiel. Il s'agit d'approximations et leur intérêt est essentiellement statistique. 
+
+La méthode proposée est transparente, accessible à tous et améliorable. N'hésitez pas à l'adapter à votre besoin. 
+
+Elle repose principalement sur l'idée de tracer des **polygones de Voronoï** autour des adresses géolocalisées, c'est à dire le polygone contenant tous les points plus proches de notre adresse cible plutôt qu'une autre adresse de la base. Sur le schéma suivant, les poitns correspondent aux adresses du REU e les traits fins délimitent les polygones de Voronoï autour de chaque point. 
+
+Dans un deuxième temps, les polygones de Voronoï sont aggrégés en fonction du bureau de vote assosié à chaque adresse (représentés par les couleurs sur le schéma), générant ainsi les « contours des bureaux de vote » (en traits épais). Les détails pratiques sont évoqués dans l'article « Méthodologie adoptée », pour les utilisateurs intéressés. 
+
+
+```{r echo=FALSE, out.width="50%", fig.cap="Schéma des polygones de Voronoï"}
+knitr::include_graphics("../inst/schema_voronoi.PNG")
+```
 
 ## Les données en entrée
 
