@@ -1,4 +1,4 @@
-# mapvotr <a href='https://github.com/jpramil/mapvotr'><img src='hex-mapvotr.png' align="right" width="120" /></a> 
+# mapvotr <a href='https://github.com/jpramil/mapvotr'><img src='man/figures/logo.png' align="right" width="120" /></a> 
 
 
   <!-- badges: start -->
