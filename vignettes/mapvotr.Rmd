@@ -24,7 +24,7 @@ options(
 )
 ```
 
-Ce package est un outil permettant de partitionner les communes françaises en « contours » ou « aires » de bureaux de vote à partir des [adresses du Répertoire électoral unique](LIEN A AJOUTER) (REU) publiées en *open-source*.
+Ce package est un outil permettant de partitionner les communes françaises en « contours » ou « aires » de bureaux de vote à partir des [adresses du Répertoire électoral unique](https://www.data.gouv.fr/fr/datasets/bureaux-de-vote-et-adresses-de-leurs-electeurs/) (REU) publiées en *open-source*.
 
 Les contours de bureaux de vote produits n'ont pas de caractère officiel. Il s'agit d'approximations et leur intérêt est essentiellement statistique. 
 
@@ -44,7 +44,7 @@ knitr::include_graphics("schema_voronoi.PNG")
 
 Le package `mapvotr` s'appuie sur 2 types de sources de données ouvertes : 
 
-1. Le [fichier déposé sur insee.fr](LIEN_A_AJOUTER_ULTERIEUREMENT) contenant les adresses des électeurs ;
+1. Le [fichier déposé sur insee.fr](https://www.data.gouv.fr/fr/datasets/bureaux-de-vote-et-adresses-de-leurs-electeurs/) contenant les adresses des électeurs ;
 2. Le fichier des contours communaux, issu par exemple de la [BD TOPO](https://geoservices.ign.fr/bdtopo) de l'IGN.
 
 Pour simplifier sa prise en main, le package incorpore des extraits de ces deux fichiers.
