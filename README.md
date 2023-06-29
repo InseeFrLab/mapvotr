@@ -1,4 +1,4 @@
-# mapvotr <a href='https://github.com/inseeFrLab/mapvotr'><img src='man/figures/logo.png' align="right" width="120" /></a> 
+# mapvotr <a href='https://inseefrlab.github.io/mapvotr/index.html'><img src='man/figures/logo.png' align="right" width="120" /></a> 
 
 
   <!-- badges: start -->
