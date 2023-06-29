@@ -7,9 +7,9 @@
 \format{
 \subsection{\code{addresses_sample}}{
 
-A data frame with 12335 rows and 6 columns:
+A data frame with 12335 rows and 7 columns:
 \describe{
-\item{id_brut_bv}{BV id}
+\item{id_brut_bv_reu}{BV id}
 \item{code_commune_ref}{City code}
 \item{longitude}{longitude (WGS84)}
 \item{latitude}{latitude (WGS84)}

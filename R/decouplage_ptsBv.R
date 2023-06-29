@@ -20,14 +20,14 @@
 #' @examples
 #' sfelecteurs <- mapvotr::sf_input_voronoi
 #' com <- mapvotr::contours_com_sample %>%
-#'   dplyr::filter(codgeo == "29039") %>%
+#'   dplyr::filter(code_insee == "29039") %>%
 #'   sf::st_transform(2154)
-#' var_bv <- "id_brut_bv"
+#' var_bv <- "id_brut_bv_reu"
 #' var_geo_score <- "geo_score"
 #' var_nbaddress <- "nb_adresses"
 #' epsg <- 2154
 #' mapvotr:::decouplage_ptsBv(sfelecteurs, com, var_bv, var_geo_score, var_nbaddress, epsg)
-decouplage_ptsBv <- function(sfelecteurs, com, var_bv = "id_brut_bv", var_geo_score = "geo_score", var_nbaddress = "nb_adresses", epsg) {
+decouplage_ptsBv <- function(sfelecteurs, com, var_bv = "id_brut_bv_reu", var_geo_score = "geo_score", var_nbaddress = "nb_adresses", epsg) {
   logr::put("Launch : decouplage_ptsBv")
 
   # Retrieve numeric coordinates (to group addresses by geometric points later)

@@ -8,8 +8,8 @@ prepare_address(
   address,
   contours_com,
   var_cog1 = "code_commune_ref",
-  var_cog2 = "codgeo",
-  var_bv1 = "id_brut_bv",
+  var_cog2 = "code_insee",
+  var_bv1 = "id_brut_bv_reu",
   path_log = NULL
 )
 }
@@ -69,7 +69,7 @@ prepare_address <- prepare_address(
   address = addresses_sample,
   contours_com = contours_com_sample,
   var_cog1 = "code_commune_ref",
-  var_bv1 = "id_brut_bv",
+  var_bv1 = "id_brut_bv_reu",
   path_log = NULL
 )
 }

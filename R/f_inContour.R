@@ -17,7 +17,7 @@
 #'     crs = 4326,
 #'     na.fail = FALSE
 #'   )
-#' sfcontour <- contours_com_sample[contours_com_sample$codgeo == "29039", ]
+#' sfcontour <- contours_com_sample[contours_com_sample$code_insee == "29039", ]
 #' verbose <- TRUE
 #' mapvotr:::f_inContour(sfpoints, sfcontour, verbose)
 

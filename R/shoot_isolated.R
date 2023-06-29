@@ -18,7 +18,7 @@
 #'
 #' @import sf dplyr
 
-shoot_isolated <- function(contours, voronoi, min_address_shoot, var_bv = "id_brut_bv") {
+shoot_isolated <- function(contours, voronoi, min_address_shoot, var_bv = "id_brut_bv_reu") {
   logr::put("Launch : shoot_isolated")
 
   # Cast contours

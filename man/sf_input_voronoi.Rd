@@ -7,9 +7,9 @@
 \format{
 \subsection{\code{sf_input_voronoi}}{
 
-A sf table with 269 rows and 5 columns:
+A sf table with 269 rows and 6 columns:
 \describe{
-\item{id_brut_bv}{BV id}
+\item{id_brut_bv_reu}{BV id}
 \item{code_commune_ref}{City code}
 \item{geo_type}{Type of geolocalization (BAN variable)}
 \item{geo_score}{Geolocalization accuracy score (BAN variable)}

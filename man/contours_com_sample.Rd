@@ -7,9 +7,9 @@
 \format{
 \subsection{\code{contours_com_sample}}{
 
-A data frame with XXXXX rows and XXXX columns:
+A data frame with 3 rows and 2 columns:
 \describe{
-\item{codgeo}{City code}
+\item{code_insee}{City code}
 \item{geometry}{sf column (WGS84)}
 }
 }
@@ -21,6 +21,6 @@ IGN
 contours_com_sample
 }
 \description{
-A subset of city contours data
+A subset of city contours data (IGN - BDTopo)
 }
 \keyword{datasets}

@@ -3,9 +3,9 @@
 #' A subset of addresses data 
 #'
 #' @format ## `addresses_sample`
-#' A data frame with 12335 rows and 6 columns:
+#' A data frame with 12335 rows and 7 columns:
 #' \describe{
-#'   \item{id_brut_bv}{BV id}
+#'   \item{id_brut_bv_reu}{BV id}
 #'   \item{code_commune_ref}{City code}
 #'   \item{longitude}{longitude (WGS84)}
 #'   \item{latitude}{latitude (WGS84)}
@@ -20,12 +20,12 @@
 
 #' Sample data for city contours
 #'
-#' A subset of city contours data 
+#' A subset of city contours data (IGN - BDTopo)
 #'
 #' @format ## `contours_com_sample`
-#' A data frame with XXXXX rows and XXXX columns:
+#' A data frame with 3 rows and 2 columns:
 #' \describe{
-#'   \item{codgeo}{City code}
+#'   \item{code_insee}{City code}
 #'   \item{geometry}{sf column (WGS84)}
 #' }
 #' @source IGN
@@ -37,9 +37,9 @@
 #' A subset of real input
 #'
 #' @format ## `sf_input_voronoi`
-#' A sf table with 269 rows and 5 columns:
+#' A sf table with 269 rows and 6 columns:
 #' \describe{
-#'   \item{id_brut_bv}{BV id}
+#'   \item{id_brut_bv_reu}{BV id}
 #'   \item{code_commune_ref}{City code}
 #'   \item{geo_type}{Type of geolocalization (BAN variable)}
 #'   \item{geo_score}{Geolocalization accuracy score (BAN variable)}

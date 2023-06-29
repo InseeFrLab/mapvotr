@@ -4,7 +4,7 @@
 \alias{shoot_isolated}
 \title{Simplify voting contours}
 \usage{
-shoot_isolated(contours, voronoi, min_address_shoot, var_bv = "id_brut_bv")
+shoot_isolated(contours, voronoi, min_address_shoot, var_bv = "id_brut_bv_reu")
 }
 \arguments{
 \item{contours}{contours}
