@@ -73,8 +73,8 @@ Create all outputs needed for a targeted city
 <span>  <span class="va">min_address_bv</span>,</span>
 <span>  <span class="va">min_address_shoot</span>,</span>
 <span>  var_cog1 <span class="op">=</span> <span class="st">"code_commune_ref"</span>,</span>
-<span>  var_cog2 <span class="op">=</span> <span class="st">"codgeo"</span>,</span>
-<span>  var_bv1 <span class="op">=</span> <span class="st">"id_brut_bv"</span>,</span>
+<span>  var_cog2 <span class="op">=</span> <span class="st">"code_insee"</span>,</span>
+<span>  var_bv1 <span class="op">=</span> <span class="st">"id_brut_bv_reu"</span>,</span>
 <span>  var_geo_score <span class="op">=</span> <span class="st">"geo_score"</span>,</span>
 <span>  var_nbaddress <span class="op">=</span> <span class="st">"nb_adresses"</span>,</span>
 <span>  path_log <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -158,7 +158,7 @@ with less than "min_address_shoot" addresses (see "shoot_isolated" documentation
 <span class="r-in"><span>  address <span class="op">=</span> <span class="va">address</span>,</span></span>
 <span class="r-in"><span>  contours_com <span class="op">=</span> <span class="va">contours_com</span>,</span></span>
 <span class="r-in"><span>  var_cog1 <span class="op">=</span> <span class="st">"code_commune_ref"</span>,</span></span>
-<span class="r-in"><span>  var_bv1 <span class="op">=</span> <span class="st">"id_brut_bv"</span>,</span></span>
+<span class="r-in"><span>  var_bv1 <span class="op">=</span> <span class="st">"id_brut_bv_reu"</span>,</span></span>
 <span class="r-in"><span>  path_log <span class="op">=</span> <span class="cn">NULL</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "========================================================================="</span>
@@ -182,8 +182,8 @@ with less than "min_address_shoot" addresses (see "shoot_isolated" documentation
 <span class="r-in"><span><span class="va">min_address_bv</span> <span class="op">&lt;-</span> <span class="fl">15</span></span></span>
 <span class="r-in"><span><span class="va">min_address_shoot</span> <span class="op">&lt;-</span> <span class="fl">5</span></span></span>
 <span class="r-in"><span><span class="va">var_cog1</span> <span class="op">&lt;-</span> <span class="st">"code_commune_ref"</span></span></span>
-<span class="r-in"><span><span class="va">var_cog2</span> <span class="op">&lt;-</span> <span class="st">"codgeo"</span></span></span>
-<span class="r-in"><span><span class="va">var_bv1</span> <span class="op">&lt;-</span> <span class="st">"id_brut_bv"</span></span></span>
+<span class="r-in"><span><span class="va">var_cog2</span> <span class="op">&lt;-</span> <span class="st">"code_insee"</span></span></span>
+<span class="r-in"><span><span class="va">var_bv1</span> <span class="op">&lt;-</span> <span class="st">"id_brut_bv_reu"</span></span></span>
 <span class="r-in"><span><span class="va">var_geo_score</span> <span class="op">&lt;-</span> <span class="st">"geo_score"</span></span></span>
 <span class="r-in"><span><span class="va">var_nbaddress</span> <span class="op">&lt;-</span> <span class="st">"nb_adresses"</span></span></span>
 <span class="r-in"><span><span class="fu">create_contours</span><span class="op">(</span><span class="va">prep_adr</span>, <span class="va">cog</span>, <span class="va">min_points_com</span>, <span class="va">min_address_bv</span>, <span class="va">min_address_shoot</span><span class="op">)</span></span></span>
@@ -209,25 +209,25 @@ with less than "min_address_shoot" addresses (see "shoot_isolated" documentation
 <span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 181289.4 ymin: 6772363 xmax: 188708.9 ymax: 6783302</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Projected CRS: RGF93 v1 / Lambert-93</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    id_brut_bv                                                           geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    id_brut_bv_reu                                                       geometry</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                          <span style="color: #949494; font-style: italic;">&lt;GEOMETRY [m]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 29039_1    MULTIPOLYGON (((183192.3 6774781, 183187.3 6774781, 183189 677478…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 29039_10   MULTIPOLYGON (((184588.2 6776035, 184453.8 6775997, 184258.9 6776…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 29039_11   MULTIPOLYGON (((184025.1 6774337, 184016.7 6774336, 184012.8 6774…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 29039_12   MULTIPOLYGON (((184547.4 6774384, 184545.7 6774388, 184537.2 6774…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 29039_13   MULTIPOLYGON (((183824.6 6772826, 183823.2 6772832, 183825 677284…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 29039_14   POLYGON ((185139.5 6774771, 185132.3 6774776, 185115 6774789, 185…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 29039_15   MULTIPOLYGON (((185339.1 6774077, 185322.1 6774095, 185313.2 6774…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 29039_16   MULTIPOLYGON (((183100.3 6776071, 183099.7 6776071, 183073.4 6776…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 29039_17   MULTIPOLYGON (((184355.2 6772442, 184354.8 6772450, 184356.5 6772…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 29039_2    POLYGON ((183028.1 6775009, 183021.5 6775017, 182995.1 6775008, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 29039_3    MULTIPOLYGON (((182654.4 6775014, 182648.7 6775016, 182605.5 6775…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 29039_4    MULTIPOLYGON (((182211.7 6776365, 182200.1 6776366, 182193.1 6776…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 29039_5    MULTIPOLYGON (((182397.3 6776408, 182374.8 6776430, 182383.5 6776…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 29039_6    MULTIPOLYGON (((183414.9 6775840, 183410.2 6775831, 183394 677583…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 29039_7    POLYGON ((183444 6775360, 183445.6 6775363, 183446.8 6775370, 183…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> 29039_8    POLYGON ((183219.7 6777248, 183212 6777307, 183203.2 6777328, 183…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> 29039_9    POLYGON ((183689.3 6778818, 183666.5 6778861, 183634.7 6778910, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 29039_1        MULTIPOLYGON (((183192.3 6774781, 183187.3 6774781, 183189 67…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 29039_10       MULTIPOLYGON (((184588.2 6776035, 184453.8 6775997, 184258.9 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 29039_11       MULTIPOLYGON (((184025.1 6774337, 184016.7 6774336, 184012.8 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 29039_12       MULTIPOLYGON (((184547.4 6774384, 184545.7 6774388, 184537.2 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 29039_13       MULTIPOLYGON (((183824.6 6772826, 183823.2 6772832, 183825 67…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 29039_14       POLYGON ((185139.5 6774771, 185132.3 6774776, 185115 6774789,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 29039_15       MULTIPOLYGON (((185339.1 6774077, 185322.1 6774095, 185313.2 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 29039_16       MULTIPOLYGON (((183100.3 6776071, 183099.7 6776071, 183073.4 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 29039_17       MULTIPOLYGON (((184355.2 6772442, 184354.8 6772450, 184356.5 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 29039_2        POLYGON ((183028.1 6775009, 183021.5 6775017, 182995.1 677500…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 29039_3        MULTIPOLYGON (((182654.4 6775014, 182648.7 6775016, 182605.5 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 29039_4        MULTIPOLYGON (((182211.7 6776366, 182200.1 6776366, 182193.1 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 29039_5        MULTIPOLYGON (((182397.3 6776408, 182374.8 6776430, 182383.5 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 29039_6        MULTIPOLYGON (((183414.9 6775840, 183410.2 6775831, 183394 67…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 29039_7        POLYGON ((183444 6775360, 183445.6 6775363, 183446.8 6775370,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> 29039_8        POLYGON ((183219.7 6777248, 183212 6777307, 183203.2 6777328,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> 29039_9        POLYGON ((183689.3 6778818, 183666.5 6778861, 183634.7 677891…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $contours_simplified</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 17 features and 1 field</span>
@@ -236,25 +236,25 @@ with less than "min_address_shoot" addresses (see "shoot_isolated" documentation
 <span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 181289.4 ymin: 6772363 xmax: 188708.9 ymax: 6783302</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Projected CRS: RGF93 v1 / Lambert-93</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    id_brut_bv                                                           geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    id_brut_bv_reu                                                       geometry</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                          <span style="color: #949494; font-style: italic;">&lt;GEOMETRY [m]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 29039_1    MULTIPOLYGON (((183189 6774789, 183200 6774814, 183190.2 6774817,…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 29039_10   POLYGON ((184588.2 6776035, 184453.8 6775997, 184258.9 6776024, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 29039_11   MULTIPOLYGON (((183880.6 6774730, 183882.7 6774730, 183883.3 6774…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 29039_12   MULTIPOLYGON (((184545.7 6774388, 184537.2 6774395, 184537.3 6774…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 29039_13   MULTIPOLYGON (((183803.9 6772849, 183799.5 6772843, 183795.1 6772…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 29039_14   POLYGON ((186329.7 6774364, 186321.6 6774383, 186245.8 6774416, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 29039_15   MULTIPOLYGON (((185313.2 6774112, 185273.8 6774166, 185276.4 6774…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 29039_16   POLYGON ((183100.3 6776071, 183099.7 6776071, 183073.4 6776081, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 29039_17   POLYGON ((184055.6 6773232, 184064.9 6773232, 184069.6 6773231, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 29039_2    POLYGON ((183028.1 6775009, 183021.5 6775017, 182995.1 6775008, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 29039_3    MULTIPOLYGON (((182899.5 6774674, 182895.5 6774670, 182889.2 6774…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 29039_4    POLYGON ((182211.7 6776365, 182200.1 6776366, 182193.1 6776366, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 29039_5    MULTIPOLYGON (((183268.1 6776772, 183266.8 6776789, 183268.8 6776…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 29039_6    POLYGON ((183484.1 6776001, 183449.8 6775967, 183399.5 6776006, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 29039_7    POLYGON ((184135.1 6775298, 184046.1 6775400, 184042.4 6775405, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> 29039_8    POLYGON ((184134.5 6776898, 183751.1 6776883, 183736.3 6776892, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> 29039_9    POLYGON ((183689.3 6778818, 183666.5 6778861, 183634.7 6778910, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 29039_1        MULTIPOLYGON (((183189 6774789, 183200 6774814, 183190.2 6774…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 29039_10       POLYGON ((184588.2 6776035, 184453.8 6775997, 184258.9 677602…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 29039_11       MULTIPOLYGON (((183880.6 6774730, 183882.7 6774730, 183883.3 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 29039_12       MULTIPOLYGON (((184545.7 6774388, 184537.2 6774395, 184537.3 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 29039_13       MULTIPOLYGON (((183803.9 6772849, 183799.5 6772843, 183795.1 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 29039_14       POLYGON ((186329.7 6774364, 186321.6 6774383, 186245.8 677441…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 29039_15       MULTIPOLYGON (((185313.2 6774112, 185273.8 6774166, 185276.4 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 29039_16       POLYGON ((183100.3 6776071, 183099.7 6776071, 183073.4 677608…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 29039_17       POLYGON ((184055.6 6773232, 184064.9 6773232, 184069.6 677323…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 29039_2        POLYGON ((183028.1 6775009, 183021.5 6775017, 182995.1 677500…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 29039_3        MULTIPOLYGON (((182899.5 6774674, 182895.5 6774670, 182889.2 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 29039_4        POLYGON ((182211.7 6776366, 182200.1 6776366, 182193.1 677636…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 29039_5        MULTIPOLYGON (((183268.1 6776772, 183266.8 6776789, 183268.8 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 29039_6        POLYGON ((183484.1 6776001, 183449.8 6775967, 183399.5 677600…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 29039_7        POLYGON ((184135.1 6775298, 184046.1 6775400, 184042.4 677540…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> 29039_8        POLYGON ((184134.5 6776898, 183751.1 6776883, 183736.3 677689…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> 29039_9        POLYGON ((183689.3 6778818, 183666.5 6778861, 183634.7 677891…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

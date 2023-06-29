@@ -99,7 +99,7 @@ Exclude points out of a border
 <span class="r-in"><span>    crs <span class="op">=</span> <span class="fl">4326</span>,</span></span>
 <span class="r-in"><span>    na.fail <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">sfcontour</span> <span class="op">&lt;-</span> <span class="va">contours_com_sample</span><span class="op">[</span><span class="va">contours_com_sample</span><span class="op">$</span><span class="va">codgeo</span> <span class="op">==</span> <span class="st">"29039"</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">sfcontour</span> <span class="op">&lt;-</span> <span class="va">contours_com_sample</span><span class="op">[</span><span class="va">contours_com_sample</span><span class="op">$</span><span class="va">code_insee</span> <span class="op">==</span> <span class="st">"29039"</span>, <span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">verbose</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="fu">mapvotr</span><span class="fu">:::</span><span class="fu">f_inContour</span><span class="op">(</span><span class="va">sfpoints</span>, <span class="va">sfcontour</span>, <span class="va">verbose</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Launch f_inContour"</span>
@@ -112,18 +112,18 @@ Exclude points out of a border
 <span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -3.94575 ymin: 47.851 xmax: -3.848959 ymax: 47.94269</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6,847 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    id_brut_bv code_commune_ref geo_type    geo_score nb_adresses</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 29039_1    29039            housenumber      0.96           2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 29039_1    29039            housenumber      0.96           4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 29039_1    29039            housenumber      0.96           1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 29039_1    29039            housenumber      0.96           2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 29039_1    29039            housenumber      0.97           2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 29039_1    29039            street           0.96           2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 29039_1    29039            housenumber      0.96           1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 29039_1    29039            housenumber      0.56           1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 29039_1    29039            housenumber      0.96           1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 29039_1    29039            housenumber      0.97           1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    id_brut_bv_reu code_commune_ref geo_type    geo_score nb_adresses</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 29039_1        29039            housenumber      0.96           2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 29039_1        29039            housenumber      0.96           4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 29039_1        29039            housenumber      0.96           1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 29039_1        29039            housenumber      0.96           2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 29039_1        29039            housenumber      0.97           2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 29039_1        29039            street           0.96           2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 29039_1        29039            housenumber      0.96           1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 29039_1        29039            housenumber      0.56           1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 29039_1        29039            housenumber      0.96           1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 29039_1        29039            housenumber      0.97           1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6,837 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: geometry &lt;POINT [°]&gt;</span></span>
 </code></pre></div>
