@@ -20,13 +20,13 @@
 #' contours_bv=lcontours$contours_simplified
 #' var_cog = "code_commune_ref"
 #' var_score="geo_score"
-#' var_code_bv="id_brut_bv"
+#' var_code_bv="id_brut_bv_reu"
 #' palettecouleurs="Paired"
 #' map_contours(cog,sfelecteurs,contours_bv)
 #' }
 
 map_contours <- function(cog,sfelecteurs,contours_bv, 
-                         var_code_bv="id_brut_bv",var_score="geo_score",var_cog = "code_commune_ref"){
+                         var_code_bv="id_brut_bv_reu",var_score="geo_score",var_cog = "code_commune_ref"){
   
   # # Tranform to WGS84 proj
   # sfelecteurs <- st_transform(sfelecteurs,crs = 4326)

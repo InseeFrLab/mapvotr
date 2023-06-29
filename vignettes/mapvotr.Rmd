@@ -73,8 +73,8 @@ prep_adr <- mapvotr::prepare_address(
   address = addresses_sample,
   contours_com = contours_com_sample,
   var_cog1 = "code_commune_ref",
-  var_cog2 = "codgeo",
-  var_bv1 = "id_brut_bv",
+  var_cog2 = "code_insee",
+  var_bv1 = "id_brut_bv_reu",
   path_log = NULL) 
 
 head(as.data.frame(prep_adr$address))
@@ -113,8 +113,8 @@ lcontours <- mapvotr::create_contours(
   min_address_bv = MIN_ADDRESS_BV,
   min_address_shoot = MIN_ADDRESS_SHOOT,
   var_cog1 = "code_commune_ref",
-  var_cog2 = "codgeo",
-  var_bv1 = "id_brut_bv",
+  var_cog2 = "code_insee",
+  var_bv1 = "id_brut_bv_reu",
   var_geo_score = "geo_score",
   var_nbaddress = "nb_adresses",
   path_log = NULL)
@@ -136,7 +136,7 @@ carte <- mapvotr::map_contours(
   cog,
   sfelecteurs = prep_adr$address,
   contours_bv = lcontours$contours,
-  var_code_bv = "id_brut_bv",
+  var_code_bv = "id_brut_bv_reu",
   var_score = "geo_score",
   var_cog = "code_commune_ref"
 )
@@ -145,7 +145,7 @@ carte_simplified <- mapvotr::map_contours(
   cog,
   sfelecteurs = prep_adr$address,
   contours_bv = lcontours$contours_simplified,
-  var_code_bv = "id_brut_bv",
+  var_code_bv = "id_brut_bv_reu",
   var_score = "geo_score",
   var_cog = "code_commune_ref"
 )

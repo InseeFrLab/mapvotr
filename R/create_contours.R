@@ -41,7 +41,7 @@
 #'   address = address,
 #'   contours_com = contours_com,
 #'   var_cog1 = "code_commune_ref",
-#'   var_bv1 = "id_brut_bv",
+#'   var_bv1 = "id_brut_bv_reu",
 #'   path_log = NULL
 #' )
 #' cog <- "29039"
@@ -50,12 +50,12 @@
 #' min_address_bv <- 15
 #' min_address_shoot <- 5
 #' var_cog1 <- "code_commune_ref"
-#' var_cog2 <- "codgeo"
-#' var_bv1 <- "id_brut_bv"
+#' var_cog2 <- "code_insee"
+#' var_bv1 <- "id_brut_bv_reu"
 #' var_geo_score <- "geo_score"
 #' var_nbaddress <- "nb_adresses"
 #' create_contours(prep_adr, cog, min_points_com, min_address_bv, min_address_shoot)
-create_contours <- function(prep_adr, cog, min_points_com, min_address_bv, min_address_shoot, var_cog1 = "code_commune_ref", var_cog2 = "codgeo", var_bv1 = "id_brut_bv", var_geo_score = "geo_score", var_nbaddress = "nb_adresses", path_log = NULL) {
+create_contours <- function(prep_adr, cog, min_points_com, min_address_bv, min_address_shoot, var_cog1 = "code_commune_ref", var_cog2 = "code_insee", var_bv1 = "id_brut_bv_reu", var_geo_score = "geo_score", var_nbaddress = "nb_adresses", path_log = NULL) {
   # Open logs
   if (!is.null(path_log)) {
     dir_log <- path_log

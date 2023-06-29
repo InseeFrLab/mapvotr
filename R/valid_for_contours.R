@@ -19,13 +19,13 @@
 #' tab_address <- mapvotr::addresses_sample
 #' min_points_com <- 50
 #' min_address_bv <- 15
-#' var_bv1 = "id_brut_bv"
+#' var_bv1 = "id_brut_bv_reu"
 #' var_nbaddress = "nb_adresses"
 #' mapvotr:::valid_for_contours(tab_address, min_points_com, min_address_bv,var_bv1,var_nbaddress)
 #' 
 #' # With some problematic BVs
-#' lines_pb <- tab_address[tab_address$id_brut_bv == "29039_1",][1:5,]
-#' tab_address_pb <- tab_address[tab_address$id_brut_bv != "29039_1",] %>% rbind(lines_pb)
+#' lines_pb <- tab_address[tab_address$id_brut_bv_reu == "29039_1",][1:5,]
+#' tab_address_pb <- tab_address[tab_address$id_brut_bv_reu != "29039_1",] %>% rbind(lines_pb)
 #' mapvotr:::valid_for_contours(tab_address_pb, min_points_com, min_address_bv,var_bv1,var_nbaddress)
 
 

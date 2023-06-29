@@ -10,14 +10,14 @@ test_that("all_process", {
     address = address,
     contours_com = contours_com,
     var_cog1 = "code_commune_ref",
-    var_bv1 = "id_brut_bv",
+    var_bv1 = "id_brut_bv_reu",
     path_log = path_log
   )
   
   cog <- "29039"
   min_points_com = 50 ; min_address_bv = 15  ; min_address_shoot = 5
-  var_cog1 = "code_commune_ref";var_cog2 = "codgeo"
-  var_bv1 = "id_brut_bv";var_geo_score = "geo_score" ;var_nbaddress = "nb_adresses"
+  var_cog1 = "code_commune_ref";var_cog2 = "code_insee"
+  var_bv1 = "id_brut_bv_reu";var_geo_score = "geo_score" ;var_nbaddress = "nb_adresses"
   
   address = prep_adr$address
   com = prep_adr$contours_com
@@ -47,7 +47,7 @@ test_that("all_process", {
       cog,
       prep_adr$address,
       lcontours$contours_simplified,
-      var_code_bv = "id_brut_bv",
+      var_code_bv = "id_brut_bv_reu",
       var_score = "geo_score",
       var_cog = "code_commune_ref"
       #palettecouleurs = "Paired"
