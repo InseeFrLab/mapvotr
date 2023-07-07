@@ -92,9 +92,9 @@
 <li>celles ayant un nombre de « points » géolocalisés en leur sein supérieur à un seuil (avec un niveau de confiance acceptable dans la BAN).</li>
 </ul>
 </li>
-<li><p>Un contours de bureau de vote sera créé s’il existe un nombre minimal d’adresses associées à ce bureau de vote (toujours dans la base du REU).</p></li>
+<li><p>Un contour de bureau de vote sera créé s’il existe un nombre minimal d’adresses associées à ce bureau de vote (toujours dans la base du REU).</p></li>
 </ul>
-<p>Remarque : différentes <strong>adresses</strong> du REU peuvent-être géolocalisées sur le même <strong>point géographique</strong>.</p>
+<p>Remarque : différentes <strong>adresses</strong> du REU peuvent être géolocalisées sur le même <strong>point géographique</strong>.</p>
 <div class="section level2">
 <h2 id="nettoyage-et-préparation-des-inputs">1. Nettoyage et préparation des inputs<a class="anchor" aria-label="anchor" href="#nettoyage-et-pr%C3%A9paration-des-inputs"></a>
 </h2>
@@ -102,8 +102,8 @@
 <ul>
 <li>La fonction <code>prepare_address</code> :
 <ul>
-<li>Remplace les arrondissement communaux de Paris, Lyon et Marseille par le code commune de la ville entière (grâce à la fonction interne <code>rm_arrond</code>).</li>
-<li>Ne conserve que les adresses…
+<li>Remplace les arrondissements communaux de Paris, Lyon et Marseille par le code commune de la ville entière (grâce à la fonction interne <code>rm_arrond</code>).</li>
+<li>Ne conserve que les adresses …
 <ul>
 <li>… dans des communes avec au moins 2 bureaux de vote (BV) d’après la base des adresses du REU (grâce à la fonction interne <code>fget_multiBV</code>).</li>
 <li>… avec une bonne qualité de géolocalisation d’après la Base Adresse Nationale (<a href="https://adresse.data.gouv.fr/" class="external-link">BAN</a>) (<code>housenumber</code>,<code>interpolation</code>, <code>locality</code>).</li>
@@ -125,7 +125,7 @@
 <h3 id="étape-1-vérifications-et-préparations">Étape 1 : Vérifications et préparations<a class="anchor" aria-label="anchor" href="#%C3%A9tape-1-v%C3%A9rifications-et-pr%C3%A9parations"></a>
 </h3>
 <ul>
-<li>Suppression des points de la base REU en dehors du contours géographique de la commune (des effets de bords peuvent exister entre les différentes sources).</li>
+<li>Suppression des points de la base REU en dehors du contour géographique de la commune (des effets de bord peuvent exister entre les différentes sources).</li>
 <li>Vérification que la commune cible possède au moins <strong>min_points_com</strong> points (grâce à la fonction interne <code>valid_for_contours</code>). Autrement, la fonction renvoie <code>NULL</code>.</li>
 <li>Vérification que chaque bureau de vote (BV) de la commune est composé d’au moins <strong>min_address_bv</strong> adresses.
 <ul>
@@ -166,7 +166,7 @@
 </ul>
 <p><strong><em>On reforme ainsi une partion de la commune en contours de BV expurgés des « confettis » traîtés.</em></strong></p>
 <p>La fonction <code>create_contours</code> renvoie la partition brute et la partition simplifiée de la commune.</p>
-<p>Comment précedemment, <code>create_contours</code> renvoie des logs, qui peuvent être enregistrées localement grâce au paramètre <code>path_log</code>.</p>
+<p>Comment précedemment, <code>create_contours</code> renvoie des logs, qui peuvent être enregistrés localement grâce au paramètre <code>path_log</code>.</p>
 </div>
 </div>
 <div class="section level2">
