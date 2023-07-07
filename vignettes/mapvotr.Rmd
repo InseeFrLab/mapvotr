@@ -44,7 +44,7 @@ knitr::include_graphics("schema_voronoi.PNG")
 
 Le package `mapvotr` s'appuie sur 2 types de sources de données ouvertes : 
 
-1. Le [fichier déposé sur insee.fr](https://www.data.gouv.fr/fr/datasets/bureaux-de-vote-et-adresses-de-leurs-electeurs/) contenant les adresses des électeurs ;
+1. Le [fichier déposé sur data.gouv.fr](https://www.data.gouv.fr/fr/datasets/bureaux-de-vote-et-adresses-de-leurs-electeurs/) contenant les adresses des électeurs ;
 2. Le fichier des contours communaux, issu par exemple de la [BD TOPO](https://geoservices.ign.fr/bdtopo) de l'IGN.
 
 Pour simplifier sa prise en main, le package incorpore des extraits de ces deux fichiers.
