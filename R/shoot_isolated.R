@@ -28,10 +28,10 @@ shoot_isolated <- function(contours, voronoi, min_address_shoot, var_bv = "id_br
 
   # Find how many "address/voronoi" per cast polygons
   contours_cast$nb_voro <- count_voro(contours_cast, voronoi_cast)
-  
+
   # Targets too little cast polygons
   pos_target <- which(contours_cast$nb_voro <= min_address_shoot)
-  
+
   # Get cast polygons neighbors
   contours_touch <- st_touches(contours_cast)
 

@@ -20,9 +20,7 @@
 #' sfcontour <- contours_com_sample[contours_com_sample$code_insee == "29039", ]
 #' verbose <- TRUE
 #' mapvotr:::f_inContour(sfpoints, sfcontour, verbose)
-
 f_inContour <- function(sfpoints, sfcontour, verbose = FALSE) {
-  
   logr::put("Launch f_inContour")
 
   test_out <- sf::st_intersects(sfpoints, sfcontour) %>% purrr::map_lgl(~ length(.x) == 0L)

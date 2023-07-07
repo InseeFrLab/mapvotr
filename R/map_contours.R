@@ -1,8 +1,8 @@
 #' Map your contours
-#' 
+#'
 #' - Crée des cartes dynamiques des contours
 #' - Create a dynamic map of contours
-#' 
+#'
 #' @param cog Municipality official code
 #' @param sfelecteurs addresses of the targeted city
 #' @param contours_bv contours of the targeted city
@@ -16,40 +16,40 @@
 #' @examples
 #' \dontrun{
 #' cog <- city_code
-#' sfelecteurs=lres$addresses
-#' contours_bv=lcontours$contours_simplified
-#' var_cog = "code_commune_ref"
-#' var_score="geo_score"
-#' var_code_bv="id_brut_bv_reu"
-#' palettecouleurs="Paired"
-#' map_contours(cog,sfelecteurs,contours_bv)
+#' sfelecteurs <- lres$addresses
+#' contours_bv <- lcontours$contours_simplified
+#' var_cog <- "code_commune_ref"
+#' var_score <- "geo_score"
+#' var_code_bv <- "id_brut_bv_reu"
+#' palettecouleurs <- "Paired"
+#' map_contours(cog, sfelecteurs, contours_bv)
 #' }
-
-map_contours <- function(cog,sfelecteurs,contours_bv, 
-                         var_code_bv="id_brut_bv_reu",var_score="geo_score",var_cog = "code_commune_ref"){
-  
+map_contours <- function(cog, sfelecteurs, contours_bv,
+                         var_code_bv = "id_brut_bv_reu", var_score = "geo_score", var_cog = "code_commune_ref") {
   # # Tranform to WGS84 proj
   # sfelecteurs <- st_transform(sfelecteurs,crs = 4326)
-  contours_bv <- st_transform(contours_bv,crs = 4326)
-  
-  sfelecteurs <- sfelecteurs %>% filter(.data[[var_cog]]==cog)
-  
+  contours_bv <- st_transform(contours_bv, crs = 4326)
+
+  sfelecteurs <- sfelecteurs %>% filter(.data[[var_cog]] == cog)
+
   liste_bv <- unique(sfelecteurs[[var_code_bv]])
   nb_bv <- length(liste_bv)
   # couleurs <- RColorBrewer::brewer.pal(nb_bv,palettecouleurs)
   # pal <- leaflet::colorFactor(couleurs, domain = liste_bv)
   set.seed(2)
-  domain <- liste_bv[sample(seq_len(nb_bv),nb_bv)]
-  pal <- leaflet::colorFactor(grDevices::rainbow(nb_bv), domain ,ordered=T)
-  
-  label_electeurs <- sfelecteurs %>% 
+  domain <- liste_bv[sample(seq_len(nb_bv), nb_bv)]
+  pal <- leaflet::colorFactor(grDevices::rainbow(nb_bv), domain, ordered = T)
+
+  label_electeurs <- sfelecteurs %>%
     dplyr::mutate(
-      lab=paste0(
-        "BV : ",.data[[var_code_bv]],
-        #" / addresse : ",.data[[var_addresse]],
-        " / confiance geoloc : ",.data[[var_score]])
-    ) %>% dplyr::pull(lab)
-  
+      lab = paste0(
+        "BV : ", .data[[var_code_bv]],
+        # " / addresse : ",.data[[var_addresse]],
+        " / confiance geoloc : ", .data[[var_score]]
+      )
+    ) %>%
+    dplyr::pull(lab)
+
   carte <- leaflet::leaflet() %>%
     leaflet::addTiles(group = "OSM (default)") %>%
     leaflet::addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") %>%
@@ -71,7 +71,7 @@ map_contours <- function(cog,sfelecteurs,contours_bv,
       color = "black",
       fillColor = ~ pal(contours_bv[[var_code_bv]]),
       fillOpacity = 0.8,
-      label =  ~ htmltools::htmlEscape(paste("Code bv retenu :", contours_bv[[var_code_bv]])),
+      label = ~ htmltools::htmlEscape(paste("Code bv retenu :", contours_bv[[var_code_bv]])),
       group = "Contours"
     ) %>%
     # addPolygons(
@@ -83,19 +83,19 @@ map_contours <- function(cog,sfelecteurs,contours_bv,
     #   fillOpacity = 0.8,
     #   label = ~ code_bv,
     #   group = "BdV"
-    #   
+    #
     # ) %>%
-  addCircleMarkers(
-    data = sfelecteurs,
-    fillColor = ~ pal(sfelecteurs[[var_code_bv]]),
-    color = "black",
-    weight = 1,
-    fillOpacity = 0.8,
-    label = htmltools::htmlEscape(label_electeurs),
-    group =  "electeurs"
-  ) %>%
+    addCircleMarkers(
+      data = sfelecteurs,
+      fillColor = ~ pal(sfelecteurs[[var_code_bv]]),
+      color = "black",
+      weight = 1,
+      fillOpacity = 0.8,
+      label = htmltools::htmlEscape(label_electeurs),
+      group = "electeurs"
+    ) %>%
     addLayersControl(
-      overlayGroups = c("electeurs", "Contours"), #, "BdV"
+      overlayGroups = c("electeurs", "Contours"), # , "BdV"
       baseGroups = c(
         "Clair",
         "OSM (default)",
@@ -104,7 +104,7 @@ map_contours <- function(cog,sfelecteurs,contours_bv,
         "Toner Lite"
       )
     ) %>%
-    hideGroup("electeurs") #on cache les électeurs par défaut
-  
+    hideGroup("electeurs") # on cache les électeurs par défaut
+
   return(carte)
 }

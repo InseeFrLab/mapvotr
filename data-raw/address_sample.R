@@ -23,10 +23,6 @@ addresses <- arrow::read_parquet(file.path("../../../../", temp))
 # unlink(temp)
 
 
-# addresses <- arrow::read_parquet(
-#   "X:/HAB-Adresses-REU/data/6_Tables_finales/table_adresses.parquet"
-# )
-
 addresses_sample <- addresses %>% 
   dplyr::filter(code_commune_ref %in% city_ids) %>% 
   dplyr::select(id_brut_bv_reu, 

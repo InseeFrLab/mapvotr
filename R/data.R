@@ -1,6 +1,6 @@
 #' Sample data for addresses
 #'
-#' A subset of addresses data 
+#' A subset of addresses data
 #'
 #' @format ## `addresses_sample`
 #' A data frame with 12335 rows and 7 columns:

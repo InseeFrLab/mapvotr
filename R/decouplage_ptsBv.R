@@ -40,11 +40,11 @@ decouplage_ptsBv <- function(sfelecteurs, com, var_bv = "id_brut_bv_reu", var_ge
 
   # Si plusieurs bureaux pour 1 coord, prendre le bureau ayant le max d'adresses.
   dfelecteurs <- sfelecteurs %>% sf::st_drop_geometry()
-  
+
   passage <- dfelecteurs %>%
     dplyr::group_by(.data[[var_bv]], xy) %>%
     dplyr::summarise(n_address = sum(.data[[var_nbaddress]]))
-  
+
   passage <- passage %>%
     dplyr::group_by(xy) %>%
     dplyr::reframe({{ var_bv }} := .data[[var_bv]][n_address == max(n_address)])

@@ -101,7 +101,7 @@ create_contours <- function(prep_adr, cog, min_points_com, min_address_bv, min_a
     logr::put(paste0(nrow_init - nrow(address), " lines and ", naddress_init - sum(address[[var_nbaddress]]), " addresses removed for ", length(scope_test), " problematic Bvs"))
     logr::put("List of problematic BVs")
     logr::put(scope_test)
-    # Re-test 
+    # Re-test
     scope_test2 <- valid_for_contours(address, min_points_com, min_address_bv, var_bv1 = var_bv1, var_nbaddress = var_nbaddress)
     if (!isTRUE(scope_test2)) {
       logr::put("City not in the scope after we removed problematic BVs")
@@ -112,7 +112,7 @@ create_contours <- function(prep_adr, cog, min_points_com, min_address_bv, min_a
 
   # Create Voronoi
   voronoi <- voronoi_com(address, com, var_bv = var_bv1)
-  
+
   # Link points to a unique vote office
   passage_ptsBv <- decouplage_ptsBv(address, com, var_bv = var_bv1, var_geo_score = var_geo_score, epsg = code_epsg)
 
