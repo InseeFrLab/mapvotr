@@ -31,9 +31,9 @@ options(
   * celles avec au moins 2 bureaux de vote.
   * celles ayant un nombre de « points » géolocalisés en leur sein supérieur à un seuil (avec un niveau de confiance acceptable dans la BAN).
   
-* Un contours de bureau de vote sera créé s'il existe un nombre minimal d'adresses associées à ce bureau de vote (toujours dans la base du REU).
+* Un contour de bureau de vote sera créé s'il existe un nombre minimal d'adresses associées à ce bureau de vote (toujours dans la base du REU).
 
-Remarque : différentes **adresses** du REU peuvent-être géolocalisées sur le même **point géographique**.
+Remarque : différentes **adresses** du REU peuvent être géolocalisées sur le même **point géographique**.
 
 
 
@@ -42,8 +42,8 @@ Remarque : différentes **adresses** du REU peuvent-être géolocalisées sur le
 <!-- Attention aux indentations ci-dessous. A relire -->
 
 * La fonction `prepare_address` : 
-  * Remplace les arrondissement communaux de Paris, Lyon et Marseille par le code commune de la ville entière (grâce à la fonction interne `rm_arrond`).
-  * Ne conserve que les adresses... 
+  * Remplace les arrondissements communaux de Paris, Lyon et Marseille par le code commune de la ville entière (grâce à la fonction interne `rm_arrond`).
+  * Ne conserve que les adresses ... 
     * ... dans des communes avec au moins 2 bureaux de vote (BV) d'après la base des adresses du REU (grâce à la fonction interne `fget_multiBV`).
     * ... avec une bonne qualité de géolocalisation d'après la Base Adresse Nationale ([BAN](https://adresse.data.gouv.fr/)) (`housenumber`,`interpolation`, `locality`).
   * Transforme les adresses en table `sf` avec le système de coordonnées WGS84.
@@ -64,7 +64,7 @@ La ville cible est désignée par son code officiel géographique ou « code Ins
 
 ### Étape 1 : Vérifications et préparations
   
-  * Suppression des points de la base REU en dehors du contours géographique de la commune (des effets de bords peuvent exister entre les différentes sources).
+  * Suppression des points de la base REU en dehors du contour géographique de la commune (des effets de bord peuvent exister entre les différentes sources).
   * Vérification que la commune cible possède au moins **min_points_com** points (grâce à la fonction interne `valid_for_contours`). Autrement, la fonction renvoie `NULL`.
   * Vérification que chaque bureau de vote (BV) de la commune est composé d'au moins **min_address_bv** adresses.
       - Si ce n'est pas le cas, les adresses associées à ce BV sont retirées du champ et la commune sera découpée sans prise en compte de l'existence de ce BV.
@@ -83,7 +83,7 @@ La ville cible est désignée par son code officiel géographique ou « code Ins
 
 L'idée est de supprimer les éventuels « confettis » de contours, essentiellement dus à des imprécisions de géolocalisation. La fonction interne `shoot_isolated` est ici mobilisée. 
 
-  * Les contours des bureaux de votes n'étant pas nécessairement contigus, on     transforme le zonage en polygones contigus (grâce à la fonction interne `st_cast_bis`)
+  * Les contours des bureaux de votes n'étant pas nécessairement contigus, on transforme le zonage en polygones contigus (grâce à la fonction interne `st_cast_bis`)
   * Ces polygones étant, par construction, des juxtapositions de polygones de Voronoï, on recherche les polygones composés de moins de **min_address_shoot** polygones de Voronoï (et donc de moins de `min_address_shoot` points géographiques). Cette opération est réalisée à l'aide de la fonction interne `count_voro`.
   * Pour un petit polygone candidat, on modifie le code de BV auquel il est associé :
     * Si ce polygone n'est pas isolé (s'il touche d'autres polygones associés à l'autres BV)
@@ -95,7 +95,7 @@ L'idée est de supprimer les éventuels « confettis » de contours, essentielle
 
 La fonction `create_contours` renvoie la partition brute et la partition simplifiée de la commune.
 
-Comment précedemment, `create_contours` renvoie des logs, qui peuvent être enregistrées localement grâce au paramètre `path_log`.
+Comment précedemment, `create_contours` renvoie des logs, qui peuvent être enregistrés localement grâce au paramètre `path_log`.
 
 ## 3. Visualisation dynamique des contours créés
 

@@ -30,9 +30,9 @@ Les contours de bureaux de vote produits n'ont pas de caractère officiel. Il s'
 
 La méthode proposée est transparente, accessible à tous et améliorable. N'hésitez pas à l'adapter à votre besoin. 
 
-Elle repose principalement sur l'idée de tracer des **polygones de Voronoï** autour des adresses géolocalisées, c'est à dire le polygone contenant tous les points plus proches de notre adresse cible plutôt qu'une autre adresse de la base. Sur le schéma suivant, les poitns correspondent aux adresses du REU e les traits fins délimitent les polygones de Voronoï autour de chaque point. 
+Elle repose principalement sur l'idée de tracer des **polygones de Voronoï** autour des adresses géolocalisées, c'est-à-dire le polygone contenant tous les points plus proches de notre adresse cible plutôt qu'une autre adresse de la base. Sur le schéma suivant, les points correspondent aux adresses du REU et les traits fins délimitent les polygones de Voronoï autour de chaque point.
 
-Dans un deuxième temps, les polygones de Voronoï sont aggrégés en fonction du bureau de vote assosié à chaque adresse (représentés par les couleurs sur le schéma), générant ainsi les « contours des bureaux de vote » (en traits épais). Les détails pratiques sont évoqués dans l'article « Méthodologie adoptée », pour les utilisateurs intéressés. 
+Dans un deuxième temps, les polygones de Voronoï sont agrégés en fonction du bureau de vote assosié à chaque adresse (représentés par les couleurs sur le schéma), générant ainsi les « contours des bureaux de vote » (en traits épais). Les détails pratiques sont évoqués dans l'article « Méthodologie adoptée », pour les utilisateurs intéressés. 
 
 <!-- ![schema_voronoi](schema_voronoi.PNG) -->
 
