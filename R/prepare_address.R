@@ -11,8 +11,8 @@
 #'     - BAN quality "housenumber", "interpolation" or "locality"
 #'   - list of cities with at least 2 BVs (among filtered addresses)
 #'   - List of city geometric contours
-#'   
-#' Operations : 
+#'
+#' Operations :
 #'  - Removes arrondissement codes for Paris, Lyon and Marseille
 #'  - Filters addresses (only "housenumber", "interpolation" or "locality" quality)
 #'  - Filters cities with at least 2 vote offices
@@ -44,7 +44,6 @@
 #'   path_log = NULL
 #' )
 prepare_address <- function(address, contours_com, var_cog1 = "code_commune_ref", var_cog2 = "code_insee", var_bv1 = "id_brut_bv_reu", path_log = NULL) {
-
   # Open logs
   if (!is.null(path_log)) {
     dir_log <- path_log

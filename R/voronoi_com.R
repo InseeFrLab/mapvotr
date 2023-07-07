@@ -21,7 +21,6 @@
 #'   sf::st_transform(2154)
 #' var_bv <- "id_brut_bv_reu"
 #' mapvotr:::voronoi_com(sfelecteurs, com, var_bv)
-
 voronoi_com <- function(sfelecteurs, com, var_bv) {
   logr::put("Launch voronoi_com")
 
@@ -32,18 +31,19 @@ voronoi_com <- function(sfelecteurs, com, var_bv) {
     dplyr::filter(n > 1)
 
   # Log how many of them
-  if (nrow(points_multiBV) > 0L) 
+  if (nrow(points_multiBV) > 0L) {
     logr::put(paste0(nrow(points_multiBV), " points with addresses related to different vote offices"))
+  }
 
   # Create Voronoï polygons inside the city 'envelope"
   voronoi <- sf::st_voronoi(x = sf::st_union(sfelecteurs), envelope = com$geometry) %>% sf::st_as_sf()
   sf::st_geometry(voronoi) <- "geometry"
   voronoi <- voronoi %>% sf::st_cast()
-  
+
   res <- sf::st_intersection(st_geometry(voronoi), st_geometry(com)) # avoid warnings this way
   res <- sf::st_as_sf(res) %>%
     dplyr::rename("geometry" = "x") %>%
     dplyr::mutate(id_voronoi = row.names(.)) # add id
-  
+
   return(res)
 }
