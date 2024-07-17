@@ -1,8 +1,7 @@
 pandoc: 2.7.3
-pkgdown: 2.0.7
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   mapvotr: mapvotr.html
   methodologie: methodologie.html
-last_built: 2023-07-07T14:17Z
-
+last_built: 2024-07-17T08:44Z
